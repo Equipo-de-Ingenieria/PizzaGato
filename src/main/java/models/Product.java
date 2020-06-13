@@ -23,15 +23,17 @@ public class Product implements Serializable {
     private String code;
     @SerializedName("description")
     private String description;
-    @SerializedName("inventories")
-    private ArrayList<Inventory> inventories;
     @SerializedName("ingredients")
     private ArrayList<Ingredient> ingredients;
+    @SerializedName("Size")
+    private String size;
+    
 
-    public Product(int idProduct, String code, String description) {
+    public Product(int idProduct, String code, String description, String size) {
         this.idProduct = idProduct;
         this.code = code;
         this.description = description;
+        this.size = size;
     }
 
     public Product() {
@@ -61,13 +63,6 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public ArrayList<Inventory> getInventories() {
-        return inventories;
-    }
-
-    public void setInventories(ArrayList<Inventory> inventories) {
-        this.inventories = inventories;
-    }
 
     public ArrayList<Ingredient> getIngredients() {
         return ingredients;
@@ -83,7 +78,15 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" + "idProduct=" + idProduct + ", code=" + code + ", description=" + description + ", inventories=" + inventories + ", ingredients=" + ingredients + '}';
+        return "Product{" + "idProduct=" + idProduct + ", code=" + code + ", description=" + description + ", ingredients=" + ingredients + '}';
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
 }
