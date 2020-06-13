@@ -1,5 +1,6 @@
 package mysqldb;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +9,7 @@ import java.util.Properties;
 
 public class DataBase {
 
-    private static final String CONFIG_FILE = "db.properties";
+    private static final String CONFIG_FILE = "src/main/resources/configuration/db.properties";
     private static DataBase instance = null;
     private Properties configuration;
     private Connection connection;
@@ -19,8 +20,11 @@ public class DataBase {
             IllegalAccessException,
             InstantiationException {
         configuration = new Properties();
-        try {
-            configuration.load(getClass().getResourceAsStream(CONFIG_FILE));
+
+     
+
+        try (FileInputStream resourceStream = new FileInputStream(CONFIG_FILE)) {
+            configuration.load(resourceStream);
             try {
                 String manejador = configuration.getProperty("database_driver");
                 System.out.printf("Cargando el manejador de la base de datos: %s%n", manejador);

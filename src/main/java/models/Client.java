@@ -12,10 +12,10 @@ import java.io.Serializable;
  *
  * @author Erick
  */
-public class Client implements Serializable{
+public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @SerializedName("idClient")
     private int idClient;
     @SerializedName("idCard")
@@ -28,19 +28,22 @@ public class Client implements Serializable{
     private String address;
     @SerializedName("phone")
     private String phone;
+    @SerializedName("email")
+    private String email;
     @SerializedName("password")
     private String password;
-    
 
-    public Client(int idClient, String idCard, String name, String lastName, String address, String phone, String password) {
+    public Client(int idClient, String idCard, String name, String lastName, String address, String phone, String email, String password) {
         this.idClient = idClient;
         this.idCard = idCard;
         this.name = name;
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
+        this.email = email;
         this.password = password;
     }
+
 
     public Client() {
     }
@@ -101,13 +104,17 @@ public class Client implements Serializable{
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "Client{" + "idClient=" + idClient + ", idCard=" + idCard + ", name=" + name + ", lastName=" + lastName + ", address=" + address + ", phone=" + phone + ", password=" + password + '}';
+        return "Client{" + "idClient=" + idClient + ", idCard=" + idCard + ", name=" + name + ", lastName=" + lastName + ", address=" + address + ", phone=" + phone + ", email=" + email + ", password=" + password + '}';
     }
     
-    
-    
-    
-
 }
