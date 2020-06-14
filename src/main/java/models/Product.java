@@ -25,16 +25,27 @@ public class Product implements Serializable {
     private String code;
     @SerializedName("description")
     private String description;
+<<<<<<< HEAD
     @SerializedName("size")
     private Size size;
+=======
+>>>>>>> eddc1175beb56f20e4cf1a1b5ba9cf1f35b7b75d
     @SerializedName("ingredients")
     private ArrayList<Ingredient> ingredients;
+    @SerializedName("Size")
+    private String size;
+    
 
+<<<<<<< HEAD
     public Product(int idProduct, int idSize, String code, String description) {
+=======
+    public Product(int idProduct, String code, String description, String size) {
+>>>>>>> eddc1175beb56f20e4cf1a1b5ba9cf1f35b7b75d
         this.idProduct = idProduct;
         this.idSize = idSize;
         this.code = code;
         this.description = description;
+        this.size = size;
     }
 
     public Product() {
@@ -64,6 +75,10 @@ public class Product implements Serializable {
         this.description = description;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> eddc1175beb56f20e4cf1a1b5ba9cf1f35b7b75d
     public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -96,7 +111,19 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "Product{" + "idProduct=" + idProduct + ", idSize=" + idSize + ", code=" + code + ", description=" + description + ", ingredients=" + ingredients + '}';
+=======
+        return "Product{" + "idProduct=" + idProduct + ", code=" + code + ", description=" + description + ", ingredients=" + ingredients + '}';
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+>>>>>>> eddc1175beb56f20e4cf1a1b5ba9cf1f35b7b75d
     }
 
 }
