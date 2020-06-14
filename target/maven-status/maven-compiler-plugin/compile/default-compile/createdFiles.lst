@@ -6,7 +6,6 @@ models\Client.class
 models\Invoice.class
 models\Status.class
 services\AdminService.class
-models\Size.class
 services\InvoiceService.class
 models\Ingredient.class
 models\Detail.class
@@ -16,3 +15,5 @@ services\ProductService.class
 services\ClientService.class
 models\Product.class
 servlets\ClientSigninServlet.class
+services\RecipeService.class
+models\Recipe.class

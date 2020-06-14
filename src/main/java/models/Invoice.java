@@ -8,6 +8,7 @@ package models;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -22,12 +23,14 @@ public class Invoice implements Serializable {
     private int idInvoice;
     @SerializedName("idClient")
     private int idClient;
+    @SerializedName("status")
+    private Status status;
     @SerializedName("date")
-    private Date date;
+    private Timestamp date;
     @SerializedName("details")
     private ArrayList<Detail> details;
 
-    public Invoice(int idInvoice, int idClient, Date date) {
+    public Invoice(int idInvoice, int idClient, Timestamp date) {
         this.idInvoice = idInvoice;
         this.idClient = idClient;
         this.date = date;
@@ -52,11 +55,11 @@ public class Invoice implements Serializable {
         this.idClient = idClient;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
@@ -68,9 +71,17 @@ public class Invoice implements Serializable {
         this.details = details;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Invoice{" + "idInvoice=" + idInvoice + ", idClient=" + idClient + ", date=" + date + ", details=" + details + '}';
+        return "Invoice{" + "idInvoice=" + idInvoice + ", idClient=" + idClient + ", date=" + date + ", status=" + status + ", details=" + details + '}';
     }
 
 }

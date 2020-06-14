@@ -19,25 +19,43 @@ public class Product implements Serializable {
 
     @SerializedName("idProduct")
     private int idProduct;
-    @SerializedName("idSize")
-    private int idSize;
     @SerializedName("code")
     private String code;
+    @SerializedName("size")
+    private String size;
     @SerializedName("description")
     private String description;
-    @SerializedName("size")
-    private Size size;
+    @SerializedName("price")
+    private double price;
     @SerializedName("ingredients")
     private ArrayList<Ingredient> ingredients;
 
-    public Product(int idProduct, int idSize, String code, String description) {
+    public Product(int idProduct, String code, String size, String description, double price) {
         this.idProduct = idProduct;
-        this.idSize = idSize;
         this.code = code;
+        this.size = size;
         this.description = description;
+        this.price = price;
     }
 
+    public Product(String code, String size, String description, double price) {
+        this.code = code;
+        this.size = size;
+        this.description = description;
+        this.price = price;
+    }
+    
+    
+
     public Product() {
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public int getIdProduct() {
@@ -64,6 +82,14 @@ public class Product implements Serializable {
         this.description = description;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -72,29 +98,9 @@ public class Product implements Serializable {
         this.ingredients = ingredients;
     }
 
-    public int getIdSize() {
-        return idSize;
-    }
-
-    public void setIdSize(int idSize) {
-        this.idSize = idSize;
-    }
-
-    public Size getSize() {
-        return size;
-    }
-
-    public void setSize(Size size) {
-        this.size = size;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     @Override
     public String toString() {
-        return "Product{" + "idProduct=" + idProduct + ", idSize=" + idSize + ", code=" + code + ", description=" + description + ", size=" + size + ", ingredients=" + ingredients + '}';
+        return "Product{" + "idProduct=" + idProduct + ", code=" + code + ", size=" + size + ", description=" + description + ", ingredients=" + ingredients + '}';
     }
 
 }

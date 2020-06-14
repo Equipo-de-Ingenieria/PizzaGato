@@ -12,9 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 import models.Admin;
-import models.Client;
 import mysqldb.DataBase;
-import static services.ClientService.getConnection;
 
 /**
  *

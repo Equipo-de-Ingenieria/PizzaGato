@@ -11,7 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import models.Detail;
 import models.Invoice;
+import models.Status;
 import static services.ClientService.getConnection;
 
 /**
@@ -20,11 +22,11 @@ import static services.ClientService.getConnection;
  */
 public class InvoiceService {
 
-    private static final String GET_INVOICES = "select inv.idInvoice, inv.idClient, inv.date "
-            + "from `eif209_2001_p02`.invoices inv "
-            + "where idClient = ?;";
-    private static final String CREATE_INVOICE = "insert into `eif209_2001_p02`.invoices (idclient, date) "
-            + "values (?, ?);";
+    private static final String GET_INVOICES = "select inv.idInvoice, inv.idClient, inv.idStatus, inv.date, stat.description "
+            + "from `eif209_2001_p02`.invoices inv, `eif209_2001_p02`.status stat "
+            + "where idClient = ? and inv.idStatus = stat.idStatus;";
+    private static final String CREATE_INVOICE = "insert into `eif209_2001_p02`.invoices (idclient, idStatus, date) "
+            + "values (?, 1, CURRENT_TIMESTAMP());";
 
     private static void printAffectedRows(int counter) {
         if (counter > 0) {
@@ -35,13 +37,14 @@ public class InvoiceService {
 
     }
 
-    public static ArrayList<Invoice> getInvoicesDB() {
+    public static ArrayList<Invoice> getInvoicesDB(int idClient) {
         ArrayList<Invoice> invoices = null;
         Invoice invoice = null;
 
         try (Connection connection = getConnection();
                 PreparedStatement stm = connection.prepareStatement(GET_INVOICES);) {
             stm.clearParameters();
+            stm.setInt(1, idClient);
 
             try (ResultSet rs = stm.executeQuery()) {
                 invoices = new ArrayList();
@@ -49,7 +52,8 @@ public class InvoiceService {
                     invoice = new Invoice();
                     invoice.setIdInvoice(rs.getInt("idInvoice"));
                     invoice.setIdClient(rs.getInt("idClient"));
-                    invoice.setDate(rs.getDate("date"));
+                    invoice.setStatus(new Status(rs.getInt("idStatus"), rs.getString("description")));
+                    invoice.setDate(rs.getTimestamp("date"));
                     invoices.add(invoice);
                 }
 
@@ -71,6 +75,64 @@ public class InvoiceService {
         }
 
         return invoices;
+    }
+
+    public static ArrayList<Invoice> getInvoices(int idClient) {
+        ArrayList<Invoice> invoices = getInvoicesDB(idClient);
+
+        if (invoices != null && !invoices.isEmpty()) {
+            invoices.forEach((invoice) -> {
+                ArrayList<Detail> details = DetailService.getDetails(invoice.getIdInvoice());
+                if (details != null && !details.isEmpty()) {
+                    invoice.setDetails(details);
+                }
+            });
+        }
+
+        return invoices;
+    }
+
+    public static boolean createInvoice(int idClient) {
+        try (Connection connection = getConnection();
+                PreparedStatement stm = connection.prepareStatement(CREATE_INVOICE);) {
+            stm.clearParameters();
+            stm.setInt(1, idClient);
+
+            int counter = 0;
+
+            counter = stm.executeUpdate();
+
+            stm.close();
+            connection.close();
+
+            if (counter != -1) {
+                printAffectedRows(counter);
+
+                if (counter == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            return false;
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage() + " createInvoice()");
+
+        }
+        return false;
+
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<Invoice> inv = getInvoices(1);
+        System.out.println(inv.toString());
+        createInvoice(1);
     }
 
 }
