@@ -15,15 +15,18 @@ import java.io.Serializable;
 public class Size implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @SerializedName("idSize")
     private int idSize;
     @SerializedName("size")
     private String size;
+    @SerializedName("description")
+    private String description;
 
-    public Size(int idSize, String size) {
+    public Size(int idSize, String size, String description) {
         this.idSize = idSize;
         this.size = size;
+        this.description = description;
     }
 
     public Size() {
@@ -45,9 +48,18 @@ public class Size implements Serializable {
         this.size = size;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return "Size{" + "idSize=" + idSize + ", size=" + size + '}';
+        return "Size{" + "idSize=" + idSize + ", size=" + size + ", description=" + description + '}';
     }
+   
 
 }

@@ -7,7 +7,6 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
@@ -22,8 +21,8 @@ public class Detail implements Serializable{
     private int idProduct;
     @SerializedName("stock")
     private int stock;
-    @SerializedName("products")
-    private ArrayList<Product> products;
+    @SerializedName("product")
+    private Product product;
 
     public Detail(int idInvoice, int idProduct, int stock) {
         this.idInvoice = idInvoice;
@@ -58,21 +57,17 @@ public class Detail implements Serializable{
         this.stock = stock;
     }
 
-    public ArrayList<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override
     public String toString() {
-        return "Detail{" + "idInvoice=" + idInvoice + ", idProduct=" + idProduct + ", stock=" + stock + ", products=" + products + '}';
+        return "Detail{" + "idInvoice=" + idInvoice + ", idProduct=" + idProduct + ", stock=" + stock + ", products=" + product + '}';
     }
     
-    
-
-  
-
 }
