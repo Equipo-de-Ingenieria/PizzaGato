@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Detail.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\services\DetailService.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\FeedBack.java
@@ -11,34 +10,9 @@ C:\Users\Erick\Documents\PizzaGato\src\main\java\services\ClientService.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\services\ProductService.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\ClientLoginServlet.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Ingredient.java
-C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Order.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\services\AdminService.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Size.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\AdminLoginServlet.java
-C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Inventory.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\ClientSigninServlet.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Admin.java
-C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Recipe.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Client.java
-=======
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\FeedBack.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Detail.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Ingredient.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Inventory.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Recipe.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\services\AdminService.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\servlets\ClientLoginServlet.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Order.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Client.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\servlets\AdminLoginServlet.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Product.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Status.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\servlets\ClientSigninServlet.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Invoice.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Size.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\services\ClientService.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\services\ProductService.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\models\Admin.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\mysqldb\DataBase.java
-C:\Users\Extreme PC\Documents\PizzaGato\src\main\java\services\InvoiceService.java
->>>>>>> eddc1175beb56f20e4cf1a1b5ba9cf1f35b7b75d
