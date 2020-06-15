@@ -1,5 +1,6 @@
 package mysqldb;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,7 +22,7 @@ public class DataBase {
             InstantiationException {
         configuration = new Properties();
 
-     
+        
 
         try (FileInputStream resourceStream = new FileInputStream(CONFIG_FILE)) {
             configuration.load(resourceStream);
