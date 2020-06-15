@@ -22,7 +22,7 @@ public class AdminService {
 
     private static final String GET_ADMIN = "select idAdmin, idCard, name, lastname, password"
             + "from `eif209_2001_p02`.admins"
-            + "where email = ? and password = ?;";
+            + "where idCard = ? and password = ?;";
 
     public static Connection getConnection() throws
             ClassNotFoundException,

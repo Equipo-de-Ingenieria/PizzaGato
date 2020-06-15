@@ -1,13 +1,13 @@
 models\Admin.class
-servlets\ClientLoginServlet.class
+servlets\LoginServlet.class
 models\FeedBack.class
-servlets\AdminLoginServlet.class
 models\Client.class
 models\Invoice.class
 models\Status.class
 services\AdminService.class
 services\InvoiceService.class
 models\Ingredient.class
+services\IngredientService.class
 models\Detail.class
 services\DetailService.class
 mysqldb\DataBase.class

@@ -1,0 +1,85 @@
+
+
+.wrapper{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    
+    background: linear-gradient(360deg,#0250c5, #d43f8d);
+}
+
+.content{
+    /* Me permite posicionar exatamente con un porcetaje donde quiero que este*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 30%;
+    height: 70%;
+    
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 1%;
+
+
+}
+
+.loginContainer{
+    display: flex;
+    text-align: center;
+
+    flex-direction: column;
+    align-items: center;
+
+    height: 70%;
+
+    padding: 10% 20%;
+
+}
+
+.loginForm{
+    width: 80%;
+    height: 100%;
+}
+
+
+.box2{
+
+}
+.box1{
+    margin-bottom: 12%;
+    font-size: 150%;
+
+}
+.box2 input{
+    /*Se usa para que no salgan del container*/
+    box-sizing:border-box;
+    margin-bottom: 10%;
+    text-align: center;
+
+    opacity: 0.9;
+
+    width: 100%;
+    padding: 6% 3%;
+    
+}
+
+
+.box3 button {
+    padding: 5% 15%;
+}
+
+
+
+/*Solo da el el tipo de letra*/
+.box1, .box3 button{
+    font-family: 'Raleway', sans-serif;
+}
+/*Cambia de forma general a todos los place holders*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #EF476F;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
