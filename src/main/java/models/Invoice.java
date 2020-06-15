@@ -7,7 +7,6 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 

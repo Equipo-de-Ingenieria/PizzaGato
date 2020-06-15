@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.Ingredient;
 import models.Product;
 import static services.DetailService.checkUpdateCounts;
@@ -33,7 +31,7 @@ public class RecipeService {
 
     public static ArrayList<Ingredient> getIngredients(int idProduct) {
         ArrayList<Ingredient> ingredients = null;
-        Ingredient ingredient = null;
+        Ingredient ingredient;
 
         try (Connection connection = getConnection();
                 PreparedStatement stm = connection.prepareStatement(GET_PRODUCT_INGREDIENTS);) {

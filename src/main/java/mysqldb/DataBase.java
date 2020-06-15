@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class DataBase {
 
-    private static final String CONFIG_FILE = "src/main/resources/configuration/db.properties";
+    private static final String CONFIG_FILE = "src\\main\\resources\\configuration\\db.properties";
     private static DataBase instance = null;
     private Properties configuration;
     private Connection connection;
