@@ -111,7 +111,7 @@ public class ProductService {
 
     public static ArrayList<Product> getProductsDB() {
         ArrayList<Product> products = null;
-        Product product = null;
+        Product product;
 
         try (Connection connection = getConnection();
                 PreparedStatement pstm = connection.prepareStatement(GET_PRODUCTS);) {
