@@ -1,15 +1,15 @@
 package mysqldb;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DataBase {
+public class DataBase implements Serializable{
 
-    private static final String CONFIG_FILE = "src\\main\\resources\\configuration\\db.properties";
+    private static final String CONFIG_FILE = "/configuration/db.properties";
     private static DataBase instance = null;
     private Properties configuration;
     private Connection connection;
@@ -20,11 +20,8 @@ public class DataBase {
             IllegalAccessException,
             InstantiationException {
         configuration = new Properties();
-
-        
-
-        try (FileInputStream resourceStream = new FileInputStream(CONFIG_FILE)) {
-            configuration.load(resourceStream);
+        try {
+            configuration.load(DataBase.class.getResourceAsStream(CONFIG_FILE));
             try {
                 String manejador = configuration.getProperty("database_driver");
                 System.out.printf("Cargando el manejador de la base de datos: %s%n", manejador);
@@ -41,7 +38,6 @@ public class DataBase {
             throw ex;
         }
     }
-
     public static DataBase getInstance() throws
             ClassNotFoundException,
             IOException,
