@@ -44,6 +44,16 @@ public class Client implements Serializable {
         this.password = password;
     }
 
+    public Client(String idCard, String name, String lastName, String address, String phone, String email, String password) {
+
+        this.idCard = idCard;
+        this.name = name;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+    }
 
     public Client() {
     }
@@ -116,5 +126,5 @@ public class Client implements Serializable {
     public String toString() {
         return "Client{" + "idClient=" + idClient + ", idCard=" + idCard + ", name=" + name + ", lastName=" + lastName + ", address=" + address + ", phone=" + phone + ", email=" + email + ", password=" + password + '}';
     }
-    
+
 }

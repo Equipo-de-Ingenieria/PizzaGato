@@ -25,8 +25,8 @@ public class ClientService {
             + "from `eif209_2001_p02`.clients cli "
             + "where cli.email = ? and cli.password = ?;";
     private static final String INSERT_CLIENT = "insert into Clients "
-            + "(idClient, idCard, name, lastname, address, phone, email, password) "
-            + "values (?, ?, ?, ?, ?, ?, ?, ?);";
+            + "(idCard, name, lastname, address, phone, email, password) "
+            + "values (?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_CLIENT = "update Clients set password = ? where idClient = ?";
     
     public static Connection getConnection() throws
@@ -92,14 +92,14 @@ public class ClientService {
                 PreparedStatement stm = connection.prepareStatement(INSERT_CLIENT);) {
             stm.clearParameters();
 
-            stm.setInt(1, client.getIdClient());
-            stm.setString(2, client.getIdCard());
-            stm.setString(3, client.getName());
-            stm.setString(4, client.getLastName());
-            stm.setString(5, client.getAddress());
-            stm.setString(6, client.getPhone());
-            stm.setString(7, client.getEmail());
-            stm.setString(8, client.getPassword());
+            //stm.setInt(1, client.getIdClient());
+            stm.setString(1, client.getIdCard());
+            stm.setString(2, client.getName());
+            stm.setString(3, client.getLastName());
+            stm.setString(4, client.getAddress());
+            stm.setString(5, client.getPhone());
+            stm.setString(6, client.getEmail());
+            stm.setString(7, client.getPassword());
             /* Los inserts se hacen con execute vs execute query*/
             if (stm.executeUpdate() != -1) {
                 return true;

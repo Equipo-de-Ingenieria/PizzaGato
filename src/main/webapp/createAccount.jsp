@@ -17,39 +17,45 @@
         <div class="wrapper">
             <div class="content">
                 <div class="loginContainer">
-                    <form class="loginForm" action="LoginServlet" method="post">
+                    <form class="loginForm" action="ClientSigninServlet" method="post">
                         <div class="box1">
                             <span>
-                                Login
+                                Crear cuenta
                             </span>
                         </div>
 
                         <div class="box2">
                             <span>
-                                <input class="user" placeholder="Email" name="userInput" required />
+                                <input class="user" placeholder="Cedula" name="userInput" required />
                             </span>
-                            
+
                             <span> 
-                                <input class="password" type="password" placeholder="Password" name="passInput" required/>
+                                <input class="password" type="password" placeholder="Contraseña" name="passInput" required/>
                             </span>
-                             <span>
-                                <input class="user" placeholder="Email" name="userInput" required />
+                            <span>
+                                <input class="user" placeholder="Nombre" name="name" required />
                             </span>
-                             <span>
-                                <input class="user" placeholder="Email" name="userInput" required />
+                            <span>
+                                <input class="user" placeholder="Apellidos" name="lastname" required />
                             </span>
-                             <span>
-                                <input class="user" placeholder="Email" name="userInput" required />
+                            <span>
+                                <input class="user" placeholder="Direccion" name="address" required />
+                            </span>
+                            <span>
+                                <input class="user" placeholder="Telefono" name="phone" required />
+                            </span>
+                            <span>
+                                <input class="user" placeholder="Email" name="email" required />
                             </span>
                         </div>
 
                         <div class="box3">
                             <span>
-                                <button class="summitBtn" type="submit">Login</button>
+                                <button class="summitBtn" type="submit">Crear</button>
                             </span>
                         </div>
                     </form>
-                    <p><a href="createAccount.jsp">Crear cuenta</a></p>
+
                 </div>
             </div>
         </div>
