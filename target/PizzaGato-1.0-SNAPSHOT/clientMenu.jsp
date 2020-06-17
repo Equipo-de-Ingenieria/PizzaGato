@@ -18,9 +18,9 @@
     </head>
     <body>
         <div class="wrapper">
-            
+
             <header>
-                <h1>Pizza Gato</h1>
+                <h1>Pizza Tono</h1>
                 <h2>La mejor pizza los mejores ingredientes</h2>
             </header>
 
@@ -32,15 +32,30 @@
                     <li href="#"><a>Feedback</a></li>
                 </ul>
             </nav>
-            
+
             <section class="section-1">
-                <div class="">
-                    
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Pellentesque nibh metus, mollis vel sem in, fermentum placerat lacus. Fusce metus dui, blandit ut nisi in, mattis interdum urna. 
+                    Duis venenatis nulla nisl, rhoncus luctus sapien euismod non. Sed semper neque a sem semper, a tristique libero finibus. 
+                    Pellentesque faucibus mattis diam id facilisis. Phasellus enim lectus, congue a congue sagittis, sagittis id lectus. 
+                    Duis eget massa et nisi efficitur tristique.
+                </article>
+                <div class="box-images">
+
+                </div>
+                
+                <div class="box-images">
+
+                </div>
+                
+                <div class="box-images">
+
                 </div>
             </section>
-            
+
             <section class="section-2">
-                
+
             </section>
 
         </div>

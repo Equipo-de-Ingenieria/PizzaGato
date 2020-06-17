@@ -59,8 +59,10 @@ public class DataBase implements Serializable{
                 configuration.getProperty("server_url"),
                 dataBase);
         System.out.printf("Conexión: '%s'%n", URL_connection);
-
-        connection = DriverManager.getConnection(URL_connection, user, password);
+        
+        
+String connectionString = "jdbc:mysql://localhost/" + dataBase + "?user=" + user + "&password=" + password + "&useUnicode=true&characterEncoding=UTF-8";
+        connection = DriverManager.getConnection(connectionString);
         return connection;
     }
 

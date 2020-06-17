@@ -68,3 +68,11 @@ ul.main-menu {
 .main-menu a:hover {
     color: #59d5d8;
 }
+
+/* ****************************************** */
+.wrapper article {
+    max-width: 300px;
+    background-color:#fff;
+    color:#818181;
+    padding: 15px;
+}

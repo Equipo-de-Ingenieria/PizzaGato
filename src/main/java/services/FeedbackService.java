@@ -5,23 +5,19 @@
  */
 package services;
 
-import com.google.gson.Gson;
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
-import models.Detail;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.FeedBack;
-import models.Product;
 import mysqldb.DataBase;
 import org.json.simple.JSONArray;
-import static services.DetailService.getConnection;
-import static services.DetailService.getDetails;
 
 /**
  *
@@ -29,7 +25,7 @@ import static services.DetailService.getDetails;
  */
 public class FeedbackService {
 
-    private static final String GET_FEEDBACKS = "select c.name, f.description, f.idFeedback, f.idClient from Feedbacks f, Clients c where f.idClient = c.idClient group by c.name, f.description;";
+    private static final String GET_FEEDBACKS = "select c.name, f.description, f.idFeedback, f.idClient from `eif209_2001_p02`.Feedbacks f, `eif209_2001_p02`.Clients c where f.idClient = c.idClient group by c.name, f.description;";
 
     public static Connection getConnection() throws
             ClassNotFoundException,
@@ -59,19 +55,20 @@ public class FeedbackService {
                     fb = new FeedBack(rs.getInt(3), rs.getInt(4), rs.getString(2), rs.getString(1));
                     fbs.add(fb);
                 }
-            }catch(Exception e){
-                 System.err.printf("Excepción: '%s'%n", e.getMessage() + " ()");
+            } catch (SQLException e) {
+                System.err.printf("Excepción: '%s'%n", e.getMessage() + " ()");
             }
         } catch (IOException
                 | ClassNotFoundException
                 | IllegalAccessException
                 | InstantiationException
-                | SQLException ex) {
+                | CommunicationsException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage() + " ()");
+        } catch (SQLException ex) {
+            Logger.getLogger(FeedbackService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fbs;
-    } 
-
+    }
 
     public static void main(String[] args) {
         FeedbackService fb = new FeedbackService();
