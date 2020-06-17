@@ -1,17 +1,36 @@
-<%-- 
-    Document   : adminmenu
-    Created on : 14/06/2020, 06:31:22 PM
-    Author     : Extreme PC
---%>
-
+<%@page import="models.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/admin.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Bank Crosaint</title>
     </head>
+      <jsp:useBean class="models.Admin" id="aux" scope="session">
+        </jsp:useBean>
+    <% 
+        Admin aux1 = (Admin) request.getSession(true).getAttribute("userData");
+        aux.setAdmin(aux1);
+    %>
     <body>
-        <h1>Hello World!</h1>
+        <div id="wrapper">
+            <div id="content">
+                <div id="menubar">
+                    <ul>
+                        <li class="nombre"><%= aux1.getName()%></li>
+                        <li><a href="depositmenu.jsp">Pizzas</a></li>
+                        <li><a href="retiremenu.jsp">Ventas</a></li>
+                        <li><a href="commentaries.jsp">Comentarios</a></li>  
+                    </ul>
+                </div>
+                <div id="main">
+
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

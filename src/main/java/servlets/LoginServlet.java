@@ -40,18 +40,19 @@ public class LoginServlet extends HttpServlet {
             admin = AdminService.getAdmin(email, pass);
             client = ClientService.getClient(email, pass);
         }
-
+// userService.getUser(id, pass)
+//                    .ifPresent(user -> request.getSession(true).setAttribute("userData", user));
         //Check if its admin or client
         if (client != null) { //Client
             request.getSession(true).setAttribute("userData", null);
-            request.setAttribute("userData", client);
+            request.getSession(true).setAttribute("userData", client);
             RequestDispatcher dispatcher = request.getRequestDispatcher(
                     "clientMenu.jsp");
             dispatcher.forward(request, response);
         } else if (admin != null) { //Admin
             request.getSession(true).setAttribute("userData", null);
-            request.setAttribute("userData", admin);
-             RequestDispatcher dispatcher = request.getRequestDispatcher(
+            request.getSession(true).setAttribute("userData", admin);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(
                     "adminMenu.jsp");
             dispatcher.forward(request, response);
         } else { //If there is no admin or client in the DB, go back to login
