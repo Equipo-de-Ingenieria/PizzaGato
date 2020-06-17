@@ -7,6 +7,7 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -21,11 +22,21 @@ public class FeedBack implements Serializable {
     private int idClient;
     @SerializedName("description")
     private String description;
-
-    public FeedBack(int idFeedback, int idClient, String description) {
+    @SerializedName("clientName")
+    private String clientName;
+    public FeedBack(int idFeedback, int idClient, String description, String clientName) {
         this.idFeedback = idFeedback;
         this.idClient = idClient;
         this.description = description;
+        this.clientName = clientName;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public FeedBack() {
@@ -57,9 +68,16 @@ public class FeedBack implements Serializable {
 
     @Override
     public String toString() {
-        return "FeedBack{" + "idFeedback=" + idFeedback + ", idClient=" + idClient + ", description=" + description + '}';
+        return toJSON().toString();
     }
     
-    
+     public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        r.put("name", getClientName());
+        r.put("idClient", getIdClient());
+        r.put("description", getDescription());
+        r.put("idFeedBack", getIdFeedback());
+        return r;
+    }
 
 }

@@ -17,6 +17,17 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CommentarieServlet</servlet-name>
+        <servlet-class>servlets.CommentarieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommentarieServlet</servlet-name>
+        <url-pattern>/CommentarieServlet</url-pattern>
+    </servlet-mapping>
+    
+    
     <session-config>
         <session-timeout>
             30

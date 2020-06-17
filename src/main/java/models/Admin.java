@@ -13,8 +13,9 @@ import java.io.Serializable;
  * @author Erick
  */
 public class Admin implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     @SerializedName("idAdmin")
     private int idAdmin;
     @SerializedName("idCard")
@@ -81,12 +82,13 @@ public class Admin implements Serializable {
     public String toString() {
         return "Admin{" + "idAdmin=" + idAdmin + ", idCard=" + idCard + ", name=" + name + ", lastName=" + lastName + ", password=" + password + '}';
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public void setAdmin(Admin aux) {
+        this.idAdmin = aux.getId();
+        this.idCard = aux.getIdCard();
+        this.name = aux.getName();
+        this.lastName = aux.getLastName();
+        this.password = aux.getPassword();
+    }
+
 }

@@ -52,10 +52,10 @@ public class AdminService {
                 if (rs.next()) {
                     admin = new Admin();
                     admin.setId(rs.getInt("idAdmin"));
-                    admin.setIdCard("idCard");
-                    admin.setName("name");
-                    admin.setLastName("lastname");
-                    admin.setPassword("password");
+                    admin.setIdCard(rs.getString("idCard"));
+                    admin.setName(rs.getString("name"));
+                    admin.setLastName(rs.getString("lastname"));
+                    admin.setPassword(rs.getString("password"));
                 }
             }
             stm.close();
