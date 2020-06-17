@@ -340,3 +340,15 @@ INSERT INTO `eif209_2001_p02`.`Recipe` (`idProduct`, `idIngredient`) VALUES (3, 
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `eif209_2001_p02`.`Feedback`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eif209_2001_p02`;
+INSERT INTO `eif209_2001_p02`.`Feedbacks` (`idFeedback`, `idClient`, `description`) VALUES (DEFAULT, 1, 'Bien');
+INSERT INTO `eif209_2001_p02`.`Feedbacks` (`idFeedback`, `idClient`, `description`) VALUES (DEFAULT, 1, 'Meh');
+INSERT INTO `eif209_2001_p02`.`Feedbacks` (`idFeedback`, `idClient`, `description`) VALUES (DEFAULT, 2, 'Mal');
+INSERT INTO `eif209_2001_p02`.`Feedbacks` (`idFeedback`, `idClient`, `description`) VALUES (DEFAULT, 2, 'Mas o menos');
+COMMIT;
+
