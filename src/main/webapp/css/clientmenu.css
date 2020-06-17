@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 16, 2020, 12:04:12 PM
+    Author     : Erick
+*/
+
+body {
+    font-family: 'Raleway', sans-serif;
+    /*Light grey*/
+    background-color: #f3f3f3;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto; 
+     /*Aesthetic white*/
+    background-color: #fff;
+}
+
+header {
+    background-color: #d43f8d;
+    height: 150px;
+    padding: 4px;
+}
+
+header h1 {
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+}
+
+header h2 {
+    font-variant: small-caps;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+}
+
+.main-menu {
+    padding: 5px 0 5px 0;
+    text-align: center;
+    line-height: 32px;
+    /*Dark grey*/
+    background-color: #818181;
+}
+
+ul.main-menu {
+    margin-top: 15px;
+}
+
+.main-menu li{
+    display: inline;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+}
+
+.main-menu a{
+    text-decoration: none;
+    color: #fff;
+    padding: 8px;
+    font-variant: small-caps;
+}
+
+.main-menu a:hover {
+    color: #59d5d8;
+}
