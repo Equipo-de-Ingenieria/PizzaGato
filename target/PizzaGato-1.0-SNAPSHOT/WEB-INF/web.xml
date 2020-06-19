@@ -4,11 +4,18 @@
         <servlet-name>ClientSigninServlet</servlet-name>
         <servlet-class>servlets.ClientSigninServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>servlets.OrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CientRedirectServlet</servlet-name>
+        <servlet-class>servlets.CientRedirectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClientSigninServlet</servlet-name>
         <url-pattern>/ClientSigninServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlets.LoginServlet</servlet-class>
@@ -17,7 +24,6 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>CommentarieServlet</servlet-name>
         <servlet-class>servlets.CommentarieServlet</servlet-class>
@@ -26,8 +32,14 @@
         <servlet-name>CommentarieServlet</servlet-name>
         <url-pattern>/CommentarieServlet</url-pattern>
     </servlet-mapping>
-    
-    
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/OrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CientRedirectServlet</servlet-name>
+        <url-pattern>/CientRedirectServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -27,6 +27,10 @@ public class Product implements Serializable {
     private String description;
     @SerializedName("price")
     private double price;
+    @SerializedName("type")
+    private String type;
+    @SerializedName("imgpath")
+    private String imgPath;
     @SerializedName("ingredients")
     private ArrayList<Ingredient> ingredients;
 
@@ -44,8 +48,6 @@ public class Product implements Serializable {
         this.description = description;
         this.price = price;
     }
-    
-    
 
     public Product() {
     }
@@ -98,9 +100,29 @@ public class Product implements Serializable {
         this.ingredients = ingredients;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Product{" + "idProduct=" + idProduct + ", code=" + code + ", size=" + size + ", description=" + description + ", ingredients=" + ingredients + '}';
+        return "Product{" + "idProduct=" + idProduct + ", code=" + code + ", size=" + size + ", description=" + description + ", price=" + price + ", type=" + type + ", imgPath=" + imgPath + ", ingredients=" + ingredients + '}';
     }
+
+   
 
 }

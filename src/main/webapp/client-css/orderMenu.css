@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Jun 16, 2020, 12:04:12 PM
+    Created on : Jun 18, 2020, 12:15:13 AM
     Author     : Erick
 */
 
@@ -16,8 +16,9 @@ body {
 
 .wrapper {
     max-width: 960px;
+    max-height: max-content;
     margin: 0 auto; 
-     /*Aesthetic white*/
+    /*Aesthetic white*/
     background-color: #fff;
 }
 
@@ -48,9 +49,12 @@ header h2 {
     background-color: #818181;
 }
 
+
 ul.main-menu {
     margin-top: 15px;
+    margin-bottom: 0;   
 }
+
 
 .main-menu li{
     display: inline;
@@ -58,21 +62,72 @@ ul.main-menu {
     font-size: 16px;
 }
 
+.main-menu li:hover{
+    transform:scale(1.2);
+}
+
+
 .main-menu a{
     text-decoration: none;
     color: #fff;
     padding: 8px;
     font-variant: small-caps;
+    transition: transform .5s;
 }
 
 .main-menu a:hover {
     color: #59d5d8;
 }
 
-/* ****************************************** */
-.wrapper article {
-    max-width: 300px;
-    background-color:#fff;
-    color:#818181;
-    padding: 15px;
+.menu-name h1{
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
 }
+
+.section-1{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px;
+
+}
+
+.menu-name{
+    width: -webkit-fill-available;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+.menu-name h2{
+    flex-basis: 100px;
+}
+.product-select{
+    padding: 8%
+}
+
+
+
+.products-container {
+/*    background-color:red;*/
+    height: 800px;
+    width: 600px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cart-container {
+/*    background-color:green;*/
+    height: 800px;
+    width: 330px;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+
+

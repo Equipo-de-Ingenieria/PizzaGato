@@ -1,0 +1,206 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 16, 2020, 12:04:12 PM
+    Author     : Erick
+*/
+
+body {
+    font-family: 'Raleway', sans-serif;
+    /*Light grey*/
+    background-color: #f3f3f3;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto; 
+    /*Aesthetic white*/
+    background-color: #fff;
+}
+
+header {
+    background-color: #d43f8d;
+    height: 150px;
+    padding: 4px;
+}
+
+header h1 {
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+}
+
+header h2 {
+    font-variant: small-caps;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+}
+
+.main-menu {
+    padding: 5px 0 5px 0;
+    text-align: center;
+    line-height: 32px;
+    /*Dark grey*/
+    background-color: #818181;
+}
+
+
+ul.main-menu {
+    margin-top: 15px;
+}
+
+
+.main-menu li{
+    display: inline;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+}
+
+.main-menu li:hover{
+    transform:scale(1.2);
+}
+
+
+.main-menu a{
+    text-decoration: none;
+    color: #fff;
+    padding: 8px;
+    font-variant: small-caps;
+    transition: transform .5s;
+}
+
+.main-menu a:hover {
+    color: #59d5d8;
+}
+
+/* ****************************************** */
+
+.wrapper article {
+    max-width: 350px;
+
+    padding: 10px;
+    margin: 1em 0;
+    width: 300px;
+}
+
+.section-1{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding: 2%;
+
+}
+
+.article-div {
+    width: 300px;
+    height: 300px;
+    margin: 10px;;
+    padding: 30px;
+    justify-content:center;
+
+}
+.article-div p{
+
+    color:#383434;
+    background-color:#fff;
+
+    word-break: break-all;
+}
+
+.box-images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 300px;
+    height: 300px;
+    margin: 10px;;
+    padding: 30px;
+
+}
+
+.box-images img {
+    width:350px;
+    height:325px;
+    max-width: 400px;
+    max-height: 400px;
+    transition: transform .2s;
+}
+
+.box-images img:hover {
+    transform: scale(1.1);
+}
+
+.section-2{
+    background-color: #232f3e;
+    height: 100px;
+    padding: 4px;
+}
+
+
+/* Pantalla de telefono */
+@media screen and (max-width: 500px){
+
+    .section-1{
+        justify-content: center;
+    }
+    header {
+        background-color: #d43f8d;
+        height: 175px;
+        padding: 7px;
+    }
+
+    header h1 {
+        text-align: center;
+        color: #fff;
+        line-height: 50px;
+        font-size: auto;
+    }
+
+    header h2 {
+        font-variant: small-caps;
+        text-align: center;
+        color: #fff;
+        line-height: 50px;
+        font-size: auto;
+    }
+
+    .main-menu {
+        padding: 5px 0 5px 0;
+        text-align: center;
+        line-height: 32px;
+        /*Dark grey*/
+        background-color: #818181;
+
+        display: flex;
+        flex-direction:column;
+    }
+
+
+    .article-div {
+        padding: 15px;
+        text-align:center;
+    }
+
+
+    .box-images {
+        display: flex;
+
+        flex-direction: row;
+        flex-wrap:wrap-reverse;
+        justify-content:center
+    }
+
+    .box-images img {
+        width:350px;
+        height:325px;
+        max-width: 400px;
+        max-height: 400px;
+    }
+}
+

@@ -21,14 +21,19 @@ import static services.DetailService.getConnection;
  */
 public class ProductService {
 
-    private static final String GET_PRODUCT = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price "
+    private static final String GET_PRODUCT = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
             + "from `eif209_2001_p02`.products pro "
             + "where pro.idProduct = ?;";
 
     private static final String GET_LASTID = "select max(idProduct) from `eif209_2001_p02`.products";
 
-    private static final String GET_PRODUCTS = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price "
+    private static final String GET_PRODUCTS = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
             + "from `eif209_2001_p02`.products pro;";
+    
+     private static final String GET_PRODUCTS_BY_TYPE = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
+            + "from `eif209_2001_p02`.products pro "
+             + "where pro.type = ?;";
+     
     private static final String CREATE_PRODUCT = "insert into `eif209_2001_p02`.products (code, size, description, price) "
             + "values (?, ?, ?, ?);";
 
@@ -61,6 +66,8 @@ public class ProductService {
                     product.setSize(rs.getString("size"));
                     product.setDescription(rs.getString("description"));
                     product.setPrice(rs.getDouble("price"));
+                    product.setType(rs.getString("type"));
+                    product.setImgPath("imgpath");
                 }
             }
             stm.close();
@@ -126,6 +133,52 @@ public class ProductService {
                     product.setSize(rs.getString(3));
                     product.setDescription(rs.getString(4));
                     product.setPrice(rs.getDouble(5));
+                    product.setType(rs.getString(6));
+                    product.setImgPath(rs.getString(7));
+
+                    products.add(product);
+                }
+
+            }
+
+            pstm.close();
+            connection.close();
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage() + " ()");
+        }
+
+        if (products == null) {
+            System.err.println("\n\nLa factura esta nula\n\n");
+        }
+
+        return products;
+    }
+    
+    public static ArrayList<Product> getProductsByTypeDB(String type) {
+        ArrayList<Product> products = null;
+        Product product;
+
+        try (Connection connection = getConnection();
+                PreparedStatement pstm = connection.prepareStatement(GET_PRODUCTS);) {
+            pstm.clearParameters();
+            pstm.setString(1, type);
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                products = new ArrayList();
+                while (rs.next()) {
+                    product = new Product();
+                    product.setIdProduct(rs.getInt(1));
+                    product.setCode(rs.getString(2));
+                    product.setSize(rs.getString(3));
+                    product.setDescription(rs.getString(4));
+                    product.setPrice(rs.getDouble(5));
+                    product.setType(rs.getString(6));
+                    product.setImgPath(rs.getString(7));
 
                     products.add(product);
                 }
@@ -152,6 +205,18 @@ public class ProductService {
 
     public static ArrayList<Product> getProducts() {
         ArrayList<Product> products = getProductsDB();
+        if (products != null && !products.isEmpty()) {
+            products.forEach((product) -> {
+                product.setIngredients(RecipeService.getIngredients(product.getIdProduct()));
+            });
+        }
+
+        return products;
+
+    }
+    
+       public static ArrayList<Product> getProductsByType(String type) {
+        ArrayList<Product> products = getProductsByTypeDB(type);
         if (products != null && !products.isEmpty()) {
             products.forEach((product) -> {
                 product.setIngredients(RecipeService.getIngredients(product.getIdProduct()));
@@ -195,16 +260,7 @@ public class ProductService {
     }
 
     public static void main(String[] args) {
-//        createProduct(new Product(1, "XDD", "Pequeno", "Pizza Monster", 5050.5));
-//        Product p = getProduct(1);
-//        System.out.println(p.toString());
-
-//        ArrayList<Product> products = getProducts();
-//        
-//        products.forEach((product) -> System.out.println(product.toString()));
-        int i = getLastID();
-        System.out.println(i);
-
+        System.out.println(getProducts().toString());
     }
 
 }

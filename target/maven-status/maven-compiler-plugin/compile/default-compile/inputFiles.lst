@@ -2,6 +2,7 @@ C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Detail.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\services\DetailService.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\services\RecipeService.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\FeedBack.java
+C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\OrderServlet.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\mysqldb\DataBase.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Invoice.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Status.java
@@ -17,5 +18,6 @@ C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\LoginServlet.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\ClientSigninServlet.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Admin.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Recipe.java
+C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\CientRedirectServlet.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\servlets\CommentarieServlet.java
 C:\Users\Erick\Documents\PizzaGato\src\main\java\models\Client.java
