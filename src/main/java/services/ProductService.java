@@ -24,7 +24,6 @@ public class ProductService {
     private static final String GET_PRODUCT = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
             + "from `eif209_2001_p02`.products pro "
             + "where pro.idProduct = ?;";
-
     private static final String GET_LASTID = "select max(idProduct) from `eif209_2001_p02`.products";
 
     private static final String GET_PRODUCTS = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
@@ -36,6 +35,57 @@ public class ProductService {
      
     private static final String CREATE_PRODUCT = "insert into `eif209_2001_p02`.products (code, size, description, price) "
             + "values (?, ?, ?, ?);";
+    private static final String UPDATE_PRODUCT = "update `eif209_2001_p02`.products set code = ?, size = ?, description = ?, price = ? where idProduct = ?;";
+    private static final String DELETE_PRODUCT = "delete from `eif209_2001_p02`.products where idProduct = ?;";
+     public boolean deleteProduct(int id) {
+        try (Connection connection = getConnection();
+                PreparedStatement stm = connection.prepareStatement(DELETE_PRODUCT)) {
+            stm.clearParameters();
+          
+            stm.setInt(1, id);
+
+            /* Los inserts se hacen con execute vs execute query*/
+            if (stm.executeUpdate() != -1) {
+                return true;
+            }
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+
+        }
+        return false;
+    }
+
+    public boolean updateProduct(Product product) {
+        try (Connection connection = getConnection();
+                PreparedStatement stm = connection.prepareStatement(UPDATE_PRODUCT)) {
+            stm.clearParameters();
+
+            stm.setString(1, product.getCode());
+            stm.setString(2, product.getSize());
+            stm.setString(3, product.getDescription());
+            stm.setDouble(4, product.getPrice());
+            stm.setInt(5, product.getIdProduct());
+
+            /* Los inserts se hacen con execute vs execute query*/
+            if (stm.executeUpdate() != -1) {
+                return true;
+            }
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+
+        }
+        return false;
+    }
 
     public static void checkUpdateCounts(int updateCounts) {
 
@@ -260,7 +310,13 @@ public class ProductService {
     }
 
     public static void main(String[] args) {
+<<<<<<< HEAD
         System.out.println(getProducts().toString());
+=======
+        ProductService ps = new ProductService();
+        Product aux = new Product(1, "hey", "hey", "hry", 1000);
+        ps.updateProduct(aux);
+>>>>>>> 5ec7ca44a58481dc0e2ec1178a712d7569dd9149
     }
 
 }

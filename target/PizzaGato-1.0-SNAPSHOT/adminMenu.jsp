@@ -21,8 +21,8 @@
                 <div id="menubar">
                     <ul>
                         <li class="nombre"><%= aux1.getName()%></li>
-                        <li><a href="depositmenu.jsp">Pizzas</a></li>
-                        <li><a href="retiremenu.jsp">Ventas</a></li>
+                        <li><a href="pizzaMenu.jsp">Pizzas</a></li>
+                        <li><a href="pizzaMenu.jsp">Ventas</a></li>
                         <li><a href="commentaries.jsp">Comentarios</a></li>  
                     </ul>
                 </div>

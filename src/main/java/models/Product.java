@@ -8,11 +8,9 @@ package models;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
+import org.json.simple.JSONObject;
 
-/**
- *
- * @author Erick
- */
+
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -100,6 +98,7 @@ public class Product implements Serializable {
         this.ingredients = ingredients;
     }
 
+<<<<<<< HEAD
     public String getType() {
         return type;
     }
@@ -125,4 +124,20 @@ public class Product implements Serializable {
 
    
 
+=======
+  @Override
+    public String toString() {
+        return toJSON().toString();
+    }
+   // int idProduct, String code, String size, String description, double price
+     public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        r.put("idProduct", getIdProduct());
+        r.put("code", getCode());
+        r.put("size", getSize());
+        r.put("description", getDescription());
+        r.put("price", getPrice());
+        return r;
+    }
+>>>>>>> 5ec7ca44a58481dc0e2ec1178a712d7569dd9149
 }

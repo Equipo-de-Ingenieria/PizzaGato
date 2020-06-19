@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-        <script src="commentariesScript.js" type="text/javascript"></script>
+        <script src="js/commentariesScript.js" type="text/javascript"></script>
         <title>Bank Crosaint</title>
     </head>
     <jsp:useBean class="models.Admin" id="aux" scope="session">
@@ -25,7 +25,7 @@
                 <div id="menubar">
                     <ul>
                         <li class="nombre"><%= aux.getName()%></li>
-                        <li><a href="depositmenu.jsp">Pizzas</a></li>
+                        <li><a href="pizzaMenu.jsp">Pizzas</a></li>
                         <li><a href="retiremenu.jsp">Ventas</a></li>
                         <li><a href="commentaries.jsp">Comentarios</a></li>  
                     </ul>
