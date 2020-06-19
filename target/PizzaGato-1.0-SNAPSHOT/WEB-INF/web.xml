@@ -27,6 +27,14 @@
         <url-pattern>/CommentarieServlet</url-pattern>
     </servlet-mapping>
     
+        <servlet>
+        <servlet-name>PizzaMenuServlet</servlet-name>
+        <servlet-class>servlets.PizzaMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PizzaMenuServlet</servlet-name>
+        <url-pattern>/PizzaMenuServlet</url-pattern>
+    </servlet-mapping>
     
     <session-config>
         <session-timeout>
