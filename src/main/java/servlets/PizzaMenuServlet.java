@@ -8,17 +8,13 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.FeedBack;
 import models.Product;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import services.FeedbackService;
 import services.ProductService;
 
 /**
@@ -49,8 +45,7 @@ public class PizzaMenuServlet extends HttpServlet {
     }
 
     public void delete(String code) {
-        ProductService ps = new ProductService();
-        ps.deleteProduct(Integer.parseInt(code));
+        ProductService.deleteProduct(Integer.parseInt(code));
     }
 
     public void add(Product pro) {
@@ -58,8 +53,7 @@ public class PizzaMenuServlet extends HttpServlet {
     }
 
     public void update(Product pro) {
-        ProductService ps = new ProductService();
-        ps.updateProduct(pro);
+        ProductService.updateProduct(pro);
     }
 
     public String getProducts() {

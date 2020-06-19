@@ -10,6 +10,7 @@ models\Detail.class
 servlets\ClientSigninServlet.class
 services\RecipeService.class
 models\Admin.class
+servlets\PizzaMenuServlet.class
 servlets\LoginServlet.class
 models\Client.class
 services\AdminService.class

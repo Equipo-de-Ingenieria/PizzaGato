@@ -28,24 +28,28 @@ public class ProductService {
 
     private static final String GET_PRODUCTS = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
             + "from `eif209_2001_p02`.products pro;";
-    
-     private static final String GET_PRODUCTS_BY_TYPE = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
+
+    private static final String GET_PRODUCTS_BY_TYPE = "select pro.idProduct, pro.code, pro.size, pro.description, pro.price, pro.type, pro.imgpath "
             + "from `eif209_2001_p02`.products pro "
-             + "where pro.type = ?;";
-     
-    private static final String CREATE_PRODUCT = "insert into `eif209_2001_p02`.products (code, size, description, price) "
-            + "values (?, ?, ?, ?);";
-    private static final String UPDATE_PRODUCT = "update `eif209_2001_p02`.products set code = ?, size = ?, description = ?, price = ? where idProduct = ?;";
+            + "where pro.type = ?;";
+
+    private static final String CREATE_PRODUCT = "insert into `eif209_2001_p02`.products (code, size, description, price, type) "
+            + "values (?, ?, ?, ?, ?);";
+
+    private static final String UPDATE_PRODUCT = "update `eif209_2001_p02`.products set size = ?, description = ?, price = ?, imgpath = ? "
+            + "where code = ?;";
+
     private static final String DELETE_PRODUCT = "delete from `eif209_2001_p02`.products where idProduct = ?;";
-     public boolean deleteProduct(int id) {
+
+    public static boolean deleteProduct(int idProduct) {
         try (Connection connection = getConnection();
                 PreparedStatement stm = connection.prepareStatement(DELETE_PRODUCT)) {
             stm.clearParameters();
-          
-            stm.setInt(1, id);
 
-            /* Los inserts se hacen con execute vs execute query*/
-            if (stm.executeUpdate() != -1) {
+            stm.setInt(1, idProduct);
+
+            int countUpdate = stm.executeUpdate();
+            if (countUpdate == 1) {
                 return true;
             }
 
@@ -60,19 +64,19 @@ public class ProductService {
         return false;
     }
 
-    public boolean updateProduct(Product product) {
+    public static boolean updateProduct(Product product) {
         try (Connection connection = getConnection();
                 PreparedStatement stm = connection.prepareStatement(UPDATE_PRODUCT)) {
             stm.clearParameters();
 
-            stm.setString(1, product.getCode());
-            stm.setString(2, product.getSize());
-            stm.setString(3, product.getDescription());
-            stm.setDouble(4, product.getPrice());
-            stm.setInt(5, product.getIdProduct());
+            stm.setString(1, product.getSize());
+            stm.setString(2, product.getDescription());
+            stm.setDouble(3, product.getPrice());
+            stm.setString(4, product.getImgPath());
+            stm.setString(5, product.getCode());
 
-            /* Los inserts se hacen con execute vs execute query*/
-            if (stm.executeUpdate() != -1) {
+            int countUpdate = stm.executeUpdate();
+            if (countUpdate == 1) {
                 return true;
             }
 
@@ -208,7 +212,7 @@ public class ProductService {
 
         return products;
     }
-    
+
     public static ArrayList<Product> getProductsByTypeDB(String type) {
         ArrayList<Product> products = null;
         Product product;
@@ -264,8 +268,8 @@ public class ProductService {
         return products;
 
     }
-    
-       public static ArrayList<Product> getProductsByType(String type) {
+
+    public static ArrayList<Product> getProductsByType(String type) {
         ArrayList<Product> products = getProductsByTypeDB(type);
         if (products != null && !products.isEmpty()) {
             products.forEach((product) -> {
@@ -286,6 +290,7 @@ public class ProductService {
             stm.setString(2, product.getSize());
             stm.setString(3, product.getDescription());
             stm.setDouble(4, product.getPrice());
+            stm.setString(5, "Pizza");
 
             int updateCounts = stm.executeUpdate();
             checkUpdateCounts(updateCounts);
@@ -302,7 +307,7 @@ public class ProductService {
                 | IllegalAccessException
                 | InstantiationException
                 | SQLException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage() + " createDetails()");
+            System.err.printf("Excepción: '%s'%n", ex.getMessage() + " createProduct()");
 
         }
         return false;
@@ -310,7 +315,16 @@ public class ProductService {
     }
 
     public static void main(String[] args) {
+        Product p = new Product();
+        p.setDescription("Pizza Gato");
+        p.setSize("20\"");
+        p.setPrice(5000.50);
+        p.setImgPath("tucalandia");
+        p.setCode("TREL");
+        p.setIdProduct(7);
 
+        updateProduct(p);
+        deleteProduct(p.getIdProduct());
     }
 
 }
