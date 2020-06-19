@@ -98,7 +98,6 @@ public class Product implements Serializable {
         this.ingredients = ingredients;
     }
 
-<<<<<<< HEAD
     public String getType() {
         return type;
     }
@@ -116,15 +115,8 @@ public class Product implements Serializable {
     }
     
     
-
-    @Override
-    public String toString() {
-        return "Product{" + "idProduct=" + idProduct + ", code=" + code + ", size=" + size + ", description=" + description + ", price=" + price + ", type=" + type + ", imgPath=" + imgPath + ", ingredients=" + ingredients + '}';
-    }
-
    
 
-=======
   @Override
     public String toString() {
         return toJSON().toString();
@@ -139,5 +131,5 @@ public class Product implements Serializable {
         r.put("price", getPrice());
         return r;
     }
->>>>>>> 5ec7ca44a58481dc0e2ec1178a712d7569dd9149
+
 }

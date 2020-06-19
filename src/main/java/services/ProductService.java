@@ -310,13 +310,7 @@ public class ProductService {
     }
 
     public static void main(String[] args) {
-<<<<<<< HEAD
-        System.out.println(getProducts().toString());
-=======
-        ProductService ps = new ProductService();
-        Product aux = new Product(1, "hey", "hey", "hry", 1000);
-        ps.updateProduct(aux);
->>>>>>> 5ec7ca44a58481dc0e2ec1178a712d7569dd9149
+
     }
 
 }

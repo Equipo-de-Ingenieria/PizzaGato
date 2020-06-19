@@ -32,7 +32,7 @@
         <servlet-name>CommentarieServlet</servlet-name>
         <url-pattern>/CommentarieServlet</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
+
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/OrderServlet</url-pattern>
@@ -41,7 +41,6 @@
         <servlet-name>CientRedirectServlet</servlet-name>
         <url-pattern>/CientRedirectServlet</url-pattern>
     </servlet-mapping>
-=======
     
         <servlet>
         <servlet-name>PizzaMenuServlet</servlet-name>
@@ -52,7 +51,7 @@
         <url-pattern>/PizzaMenuServlet</url-pattern>
     </servlet-mapping>
     
->>>>>>> 5ec7ca44a58481dc0e2ec1178a712d7569dd9149
+
     <session-config>
         <session-timeout>
             30
