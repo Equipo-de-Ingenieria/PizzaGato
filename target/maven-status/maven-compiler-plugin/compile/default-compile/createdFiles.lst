@@ -14,6 +14,7 @@ servlets\PizzaMenuServlet.class
 servlets\LoginServlet.class
 models\Client.class
 services\AdminService.class
+servlets\SellsMenuServlet.class
 services\DetailService.class
 services\FeedbackService.class
 mysqldb\DataBase.class

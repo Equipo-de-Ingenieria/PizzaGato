@@ -51,6 +51,14 @@
         <url-pattern>/PizzaMenuServlet</url-pattern>
     </servlet-mapping>
     
+     <servlet>
+        <servlet-name>SellsMenuServlet</servlet-name>
+        <servlet-class>servlets.SellsMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SellsMenuServlet</servlet-name>
+        <url-pattern>/SellsMenuServlet</url-pattern>
+    </servlet-mapping>
 
     <session-config>
         <session-timeout>

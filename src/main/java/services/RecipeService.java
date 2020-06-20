@@ -103,18 +103,18 @@ public class RecipeService {
     }
 
     public static void main(String[] args) {
-        ArrayList<Ingredient> in = IngredientService.getIngredientsDB();
-//        System.out.println(in.toString());
-        Product product = new Product("SAD", "Grande", "PapaJohns", 11005.5);
-        ArrayList<Ingredient> newIn = new ArrayList();
-        newIn.add(in.get(1));
-        newIn.add(in.get(2));
-        newIn.add(in.get(3));
-
-        product.setIngredients(newIn);
-        ProductService.createProduct(product);
-        int idProduct = ProductService.getLastID();
-        createRecipe(idProduct, newIn);
+//        ArrayList<Ingredient> in = IngredientService.getIngredientsDB();
+////        System.out.println(in.toString());
+//        //Product product = new Product("SAD", "Grande", "PapaJohns", 11005.5);
+//        ArrayList<Ingredient> newIn = new ArrayList();
+//        newIn.add(in.get(1));
+//        newIn.add(in.get(2));
+//        newIn.add(in.get(3));
+//
+//        product.setIngredients(newIn);
+//        ProductService.createProduct(product);
+//        int idProduct = ProductService.getLastID();
+//        createRecipe(idProduct, newIn);
         
 
     }

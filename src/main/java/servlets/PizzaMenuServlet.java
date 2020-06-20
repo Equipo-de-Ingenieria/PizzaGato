@@ -32,11 +32,11 @@ public class PizzaMenuServlet extends HttpServlet {
             if (request.getParameter("method").equals("delete")) {
                 delete(request.getParameter("row"));
 
-            } else if (request.getParameter("method").equals("add")) {//String code, String size, String description, double price
-                Product product = new Product(request.getParameter("code"), request.getParameter("size"), request.getParameter("desc"), Double.parseDouble(request.getParameter("price")));
+            } else if (request.getParameter("method").equals("add")) {
+                Product product = new Product(request.getParameter("code"), request.getParameter("size"), request.getParameter("desc"), Double.parseDouble(request.getParameter("price")), request.getParameter("type"));
                 add(product);
             } else if (request.getParameter("method").equals("update")) {
-                Product product = new Product(request.getParameter("code"), request.getParameter("size"), request.getParameter("desc"), Double.parseDouble(request.getParameter("price")));
+                Product product = new Product(request.getParameter("code"), request.getParameter("size"), request.getParameter("desc"), Double.parseDouble(request.getParameter("price")), request.getParameter("type"));
                 update(product);
             }
             out.println("Ok!");

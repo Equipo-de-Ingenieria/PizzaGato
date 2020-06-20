@@ -290,7 +290,7 @@ public class ProductService {
             stm.setString(2, product.getSize());
             stm.setString(3, product.getDescription());
             stm.setDouble(4, product.getPrice());
-            stm.setString(5, "Pizza");
+            stm.setString(5, product.getType());
 
             int updateCounts = stm.executeUpdate();
             checkUpdateCounts(updateCounts);

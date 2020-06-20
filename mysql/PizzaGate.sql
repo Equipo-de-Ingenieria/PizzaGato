@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `eif209_2001_p02`.`Details` (
   CONSTRAINT `fk_Details_Products1`
     FOREIGN KEY (`idProduct`)
     REFERENCES `eif209_2001_p02`.`Products` (`idProduct`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
