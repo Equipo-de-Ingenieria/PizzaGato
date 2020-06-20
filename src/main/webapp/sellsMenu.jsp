@@ -15,10 +15,9 @@
     <jsp:useBean class="models.Admin" id="aux" scope="session">
     </jsp:useBean>
     <script type="text/javascript">
-        dummie();
-        inicialaizeData(<%= new SellsMenuServlet().getInvoice()%>);
+        initData(<%= new SellsMenuServlet().getInvoice()%>);
     </script>
-    
+
     <body>
         <div id="wrapper">
             <div id="content">
@@ -31,22 +30,26 @@
                     </ul>
                 </div>
                 <div id="main">
-                    <table>
-                        <caption>Ventas</caption>
-                        <thead>
-                            <tr>
-                                <th >Id</th>
-                                <th >Id Cliente</th>
-                                <th >Estado</th>
-                                <th >Fecha</th>
-                                <th >Detalle</th>
-                        
-                            </tr>
-                        </thead>    
-                        <tbody id="bt"></tbody>
-                        <tfoot>
-                        </tfoot>
-                    </table>       
+                    <div class="maincontents">
+                        <div class="containerBox">         
+                            <div class="containerTable">
+                                <table class ="table">
+                                    <thead>
+                                        <tr>
+                                            <th >Id</th>
+                                            <th >Id Cliente</th>
+                                            <th >Estado</th>
+                                            <th >Fecha</th>
+                                            <th >Detalle</th>
+                                        </tr>
+                                    </thead>    
+                                    <tbody id="bt"></tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>     
+                            </div>
+                        </div>
+                    </div>
                 </div>
-    </body>
-</html>
+                </body>
+                </html>

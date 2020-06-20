@@ -4,17 +4,14 @@
  * and open the template in the editor.
  */
 var invoices = null;
-function inicialaizeData(invoice) {
-    invoices = invoice;
-}
-function dummie() {
-    var i = 0;
-}
+
 
 function init() {
     cargarTabla();
 }
-
+function initData(invoice) {
+    invoices = invoice;
+}
 function cargarTabla() {
     var refTabla = document.getElementById('bt');
     if (refTabla) {

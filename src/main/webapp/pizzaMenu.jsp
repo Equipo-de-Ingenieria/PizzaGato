@@ -35,7 +35,7 @@
                                 <tr>
                                     <td class="c1" style="font-weight: bold;">Código:</td>
                                     <td>
-                                         <input type="text" id="code" name="code" size="30"/>
+                                        <input type="text" id="code" name="code" size="30"  pattern="[a-z]{4}" placeholder = "Maximo 4 caracteres"/>
                                     </td>
                                 </tr><tr>
                                     <td class="c1">Tamaño:</td>
@@ -53,10 +53,14 @@
                                         <input type="number" id="price" name="price" size="30"/>
                                     </td>
                                 </tr><tr>
-                                      </tr><tr>
                                     <td class="c1">Tipo</td>
                                     <td>
                                         <input type="text" id="type" name="type" size="30"/>
+                                    </td>
+                                </tr><tr>
+                                    <td class="c1">Ubicacion de la imagen</td>
+                                    <td>
+                                        <input type="text" id="imgPath" name="imgPath" size="30"/>
                                     </td>
                                 </tr><tr>
                                     <td colspan="2" class="f_btn">
@@ -67,23 +71,27 @@
                             </table>
                         </form>                  
                     </section>
-                    <table class="tablaGeneral">
-                        <caption>Facturas</caption>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Codigo</th>
-                                <th>Tamaño</th>
-                                <th>Descripcion</th>
-                                <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody id="bt"></tbody>
-                        <tfoot>
-
-                        </tfoot>
-                    </table>
-
+                    <div class="maincontents">
+                        <div class="containerBox">         
+                            <div class="containerTable">
+                                <table class ="table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Codigo</th>
+                                            <th>Tamaño</th>
+                                            <th>Descripcion</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bt"></tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

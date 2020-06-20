@@ -15,8 +15,8 @@
     <jsp:useBean class="models.Admin" id="aux" scope="session">
     </jsp:useBean>
     <script type="text/javascript">
-            inicialaizeData(<%= new CommentarieServlet().getFeedBacks()%>);
-        </script>
+        inicialaizeData(<%= new CommentarieServlet().getFeedBacks()%>);
+    </script>
 
 
     <body>
@@ -31,19 +31,23 @@
                     </ul>
                 </div>
                 <div id="main">
-                    <table>
-                        <caption>Comentarios</caption>
-                        <thead>
-                            <tr>
-                                <th>Cliente</th>
-                                <th>Comentario</th>
-                            </tr>
-                        </thead>    
-                        <tbody id="bt"></tbody>
-                        <tfoot>
-                        </tfoot>
-                    </table>               
-
+                    <div class="maincontents">
+                        <div class="containerBox">         
+                            <div class="containerTable">
+                                <table class ="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Cliente</th>
+                                            <th>Comentario</th>
+                                        </tr>
+                                    </thead>    
+                                    <tbody id="bt"></tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>               
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

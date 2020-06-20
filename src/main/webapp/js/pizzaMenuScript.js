@@ -67,11 +67,11 @@ function deleteProduct() {
 function deletePro(row, idProduct) {
     var refTable = document.getElementById("bt");
     if (refTable) {
-        refTable.deleteRow(row); 
+        refTable.deleteRow(row);
         fetch('PizzaMenuServlet?row=' + idProduct + '&method=delete').then(function (resultado) {
             return resultado.json();
         }).then(response);
-       
+
 
         for (var i = row; i < refTable.rows.length; i++) {
             var refFila = refTable.rows[i];
@@ -102,7 +102,8 @@ function update() {
     var desc = document.getElementById("description").value;
     var price = document.getElementById("price").value;
     var type = document.getElementById("type").value;
-    fetch('PizzaMenuServlet?code=' + code + '&price=' + price + '&desc=' + desc + '&size=' + size + '&type=' + type + '&method=update').then(function (resultado) {
+    var imgPath = document.getElementById("imgPath").value;
+    fetch('PizzaMenuServlet?code=' + code + '&price=' + price + '&desc=' + desc + '&size=' + size + '&type=' + type + '&imgPath=' + imgPath + '&method=update').then(function (resultado) {
         return resultado.json();
     }).then(response);
 }
@@ -112,7 +113,8 @@ function add() {
     var desc = document.getElementById("description").value;
     var price = document.getElementById("price").value;
     var type = document.getElementById("type").value;
-    fetch('PizzaMenuServlet?code=' + code + '&price=' + price + '&desc=' + desc + '&size=' + size + '&type=' + type + '&method=add').then(function (resultado) {
+    var imgPath = document.getElementById("imgPath").value;
+    fetch('PizzaMenuServlet?code=' + code + '&price=' + price + '&desc=' + desc + '&size=' + size + '&type=' + type + '&imgPath=' + imgPath + '&method=add').then(function (resultado) {
         return resultado.json();
     }).then(response);
 }
