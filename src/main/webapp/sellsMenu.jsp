@@ -1,4 +1,4 @@
-<%@page import="servlets.CommentarieServlet"%>
+<%@page import="servlets.SellsMenuServlet"%>
 <%@page import="models.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,15 +9,14 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-        <script src="js/commentariesScript.js" type="text/javascript"></script>
-        <title>Comentarios</title>
+        <script src="js/sellsMenuScript.js" type="text/javascript"></script>
+        <title>Ventas</title>
     </head>
     <jsp:useBean class="models.Admin" id="aux" scope="session">
     </jsp:useBean>
     <script type="text/javascript">
-        inicialaizeData(<%= new CommentarieServlet().getFeedBacks()%>);
+        initData(<%= new SellsMenuServlet().getInvoice()%>);
     </script>
-
 
     <body>
         <div id="wrapper">
@@ -37,20 +36,20 @@
                                 <table class ="table">
                                     <thead>
                                         <tr>
-                                            <th>Cliente</th>
-                                            <th>Comentario</th>
+                                            <th >Id</th>
+                                            <th >Id Cliente</th>
+                                            <th >Estado</th>
+                                            <th >Fecha</th>
+                                            <th >Detalle</th>
                                         </tr>
                                     </thead>    
                                     <tbody id="bt"></tbody>
                                     <tfoot>
                                     </tfoot>
-                                </table>               
+                                </table>     
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-    </body>
-</html>
+                </body>
+                </html>

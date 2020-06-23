@@ -16,6 +16,7 @@ servlets\LoginServlet.class
 servlets\CreateOrderServlet.class
 models\Client.class
 services\AdminService.class
+servlets\SellsMenuServlet.class
 services\DetailService.class
 services\FeedbackService.class
 mysqldb\DataBase.class

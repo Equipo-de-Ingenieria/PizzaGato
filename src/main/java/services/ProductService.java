@@ -285,12 +285,12 @@ public class ProductService {
         try (Connection connection = getConnection();
                 PreparedStatement stm = connection.prepareStatement(CREATE_PRODUCT);) {
             stm.clearParameters();
-
-            stm.setString(1, product.getCode());
+            String code = product.getCode().toUpperCase();
+            stm.setString(1, product.getCode().toUpperCase());
             stm.setString(2, product.getSize());
             stm.setString(3, product.getDescription());
             stm.setDouble(4, product.getPrice());
-            stm.setString(5, "Pizza");
+            stm.setString(5, product.getType());
 
             int updateCounts = stm.executeUpdate();
             checkUpdateCounts(updateCounts);

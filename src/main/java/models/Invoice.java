@@ -7,8 +7,12 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -80,7 +84,19 @@ public class Invoice implements Serializable {
 
     @Override
     public String toString() {
-        return "Invoice{" + "idInvoice=" + idInvoice + ", idClient=" + idClient + ", date=" + date + ", status=" + status + ", details=" + details + '}';
+        return toJSON().toString();
+    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        r.put("idInvoice", getIdInvoice());
+        r.put("idClient", getIdClient());
+        r.put("status", getStatus().getDescription());
+        Timestamp date = getDate();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String strDate = dateFormat.format(date);
+        r.put("date", strDate);
+        return r;
     }
 
 }

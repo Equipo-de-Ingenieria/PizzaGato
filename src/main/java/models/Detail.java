@@ -7,6 +7,10 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -65,9 +69,19 @@ public class Detail implements Serializable{
         this.product = product;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "Detail{" + "idInvoice=" + idInvoice + ", idProduct=" + idProduct + ", stock=" + stock + ", products=" + product + '}';
+        return toJSON().toString();
     }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        r.put("product", getProduct().getDescription());
+        r.put("stock", getStock());
+        r.put("price", getProduct().getPrice());
+        r.put("subtotal", getProduct().getPrice() * getStock());
+        return r;
+    }
+
     
 }

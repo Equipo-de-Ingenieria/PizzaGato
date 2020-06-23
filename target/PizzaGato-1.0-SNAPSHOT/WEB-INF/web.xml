@@ -52,10 +52,23 @@
         <servlet-name>PizzaMenuServlet</servlet-name>
         <url-pattern>/PizzaMenuServlet</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     <servlet-mapping>
         <servlet-name>CreateOrderServlet</servlet-name>
         <url-pattern>/CreateOrderServlet</url-pattern>
     </servlet-mapping>
+=======
+    
+     <servlet>
+        <servlet-name>SellsMenuServlet</servlet-name>
+        <servlet-class>servlets.SellsMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SellsMenuServlet</servlet-name>
+        <url-pattern>/SellsMenuServlet</url-pattern>
+    </servlet-mapping>
+
+>>>>>>> 3a1fe3291469ee3fbd036ad28e1489938e4e5f48
     <session-config>
         <session-timeout>
             30

@@ -10,13 +10,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script src="js/commentariesScript.js" type="text/javascript"></script>
-        <title>Bank Crosaint</title>
+        <title>Comentarios</title>
     </head>
     <jsp:useBean class="models.Admin" id="aux" scope="session">
     </jsp:useBean>
     <script type="text/javascript">
-            inicialaizeData(<%= new CommentarieServlet().getFeedBacks()%>);
-        </script>
+        inicialaizeData(<%= new CommentarieServlet().getFeedBacks()%>);
+    </script>
 
 
     <body>
@@ -26,24 +26,28 @@
                     <ul>
                         <li class="nombre"><%= aux.getName()%></li>
                         <li><a href="pizzaMenu.jsp">Pizzas</a></li>
-                        <li><a href="retiremenu.jsp">Ventas</a></li>
+                        <li><a href="sellsMenu.jsp">Ventas</a></li>
                         <li><a href="commentaries.jsp">Comentarios</a></li>  
                     </ul>
                 </div>
                 <div id="main">
-                    <table>
-                        <caption>Comentarios</caption>
-                        <thead>
-                            <tr>
-                                <th colspan="2">Cliente</th>
-                                <th colspan="2">Comentario</th>
-                            </tr>
-                        </thead>    
-                        <tbody id="bt"></tbody>
-                        <tfoot>
-                        </tfoot>
-                    </table>               
-
+                    <div class="maincontents">
+                        <div class="containerBox">         
+                            <div class="containerTable">
+                                <table class ="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Cliente</th>
+                                            <th>Comentario</th>
+                                        </tr>
+                                    </thead>    
+                                    <tbody id="bt"></tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>               
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

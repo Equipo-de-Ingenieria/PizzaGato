@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `eif209_2001_p02`.`Invoices` (
   `idInvoice` INT NOT NULL AUTO_INCREMENT,
   `idClient` INT NOT NULL,
   `idStatus` INT NOT NULL,
-  `date` TIMESTAMP NULL,
+  `date` TIMESTAMP DEFAULT NOW(),
   PRIMARY KEY (`idInvoice`),
   INDEX `fk_Invoices_Client1_idx` (`idClient` ASC) VISIBLE,
   INDEX `fk_Invoices_Status1_idx` (`idStatus` ASC) VISIBLE,
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `eif209_2001_p02`.`Details` (
   CONSTRAINT `fk_Details_Products1`
     FOREIGN KEY (`idProduct`)
     REFERENCES `eif209_2001_p02`.`Products` (`idProduct`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -278,8 +278,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eif209_2001_p02`;
-INSERT INTO `eif209_2001_p02`.`Invoices` (`idInvoice`, `idClient`, `idStatus`, `date`) VALUES (DEFAULT, 1, 1, NULL);
-INSERT INTO `eif209_2001_p02`.`Invoices` (`idInvoice`, `idClient`, `idStatus`, `date`) VALUES (DEFAULT, 2, 1, NULL);
+INSERT INTO `eif209_2001_p02`.`Invoices` (`idInvoice`, `idClient`, `idStatus`) VALUES (DEFAULT, 1, 1);
+INSERT INTO `eif209_2001_p02`.`Invoices` (`idInvoice`, `idClient`, `idStatus`) VALUES (DEFAULT, 2, 1;
 
 COMMIT;
 

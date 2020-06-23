@@ -27,7 +27,8 @@ public class InvoiceService {
             + "where idClient = ? and inv.idStatus = stat.idStatus;";
     private static final String CREATE_INVOICE = "insert into `eif209_2001_p02`.invoices (idclient, idStatus, date) "
             + "values (?, 1, CURRENT_TIMESTAMP());";
-
+    private static final String GET_ALL_INVOICES = "select inv.idInvoice, inv.idClient, inv.idStatus, inv.date, stat.description from `eif209_2001_p02`.invoices inv, `eif209_2001_p02`.status stat where inv.idStatus = stat.idStatus;";
+    
     private static void printAffectedRows(int counter) {
         if (counter > 0) {
             System.out.println("Se insertaron " + counter);
@@ -125,12 +126,53 @@ public class InvoiceService {
 
         }
         return false;
-
     }
+    
+        public static ArrayList<Invoice> getAllInvoices(){
+         ArrayList<Invoice> invoices = null;
+        Invoice invoice = null;
 
+        try (Connection connection = getConnection();
+                PreparedStatement stm = connection.prepareStatement(GET_ALL_INVOICES);) {
+            stm.clearParameters();
+
+            try (ResultSet rs = stm.executeQuery()) {
+                invoices = new ArrayList();
+                while (rs.next()) {
+                    invoice = new Invoice();
+                    invoice.setIdInvoice(rs.getInt("idInvoice"));
+                    invoice.setIdClient(rs.getInt("idClient"));
+                    invoice.setStatus(new Status(rs.getInt("idStatus"), rs.getString("description")));
+                    invoice.setDate(rs.getTimestamp("date"));
+                    invoices.add(invoice);
+                }
+            }
+            stm.close();
+            connection.close();
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage() + " ()");
+        }
+
+        if (invoices == null) {
+            System.err.println("\n\nLa factura esta nula\n\n");
+        }
+        invoices = setDetails(invoices);
+        return invoices;
+    }
+    private static ArrayList<Invoice> setDetails(ArrayList<Invoice> inv){
+        for(int i = 0; i < inv.size(); i++){
+            inv.get(i).setDetails(DetailService.getDetails(inv.get(i).getIdInvoice()));
+        }
+        return inv;
+    }
     public static void main(String[] args) {
 
-        ArrayList<Invoice> inv = getInvoices(1);
+        ArrayList<Invoice> inv = getAllInvoices();
         System.out.println(inv.toString());
         createInvoice(1);
     }

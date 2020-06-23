@@ -42,11 +42,13 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public Product(String code, String size, String description, double price) {
+    public Product(String code, String size, String description, double price, String type, String imgPath) {
         this.code = code;
         this.size = size;
         this.description = description;
         this.price = price;
+        this.type = type;
+        this.imgPath = imgPath;
     }
 
     public Product() {

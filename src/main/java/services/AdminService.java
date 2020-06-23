@@ -20,7 +20,7 @@ import mysqldb.DataBase;
  */
 public class AdminService {
 
-    private static final String GET_ADMIN = "select idAdmin, idCard, name, lastname, password from `eif209_2001_p02`.admins adm  where adm.idCard = ? and adm.password = ?;";
+    private static final String GET_ADMIN = "select idAdmin, idCard, name, lastname, password from `eif209_2001_p02`.admins adm  where adm.email = ? and adm.password = ?;";
 
     public static Connection getConnection() throws
             ClassNotFoundException,
