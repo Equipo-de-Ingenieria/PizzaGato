@@ -16,13 +16,14 @@ body {
 
 .wrapper {
     max-width: 960px;
+    max-height: max-content;
     margin: 0 auto; 
     /*Aesthetic white*/
-    background-color: #fff;
+    background-color: #e6e3e3;
 }
 
 header {
-    background-color: #d43f8d;
+    background-color: #b21919;
     height: 150px;
     padding: 4px;
 }
@@ -45,12 +46,13 @@ header h2 {
     text-align: center;
     line-height: 32px;
     /*Dark grey*/
-    background-color: #818181;
+    background-color: #170f0f;
 }
 
 
 ul.main-menu {
     margin-top: 15px;
+    margin-bottom: 0;   
 }
 
 
@@ -75,6 +77,16 @@ ul.main-menu {
 
 .main-menu a:hover {
     color: #59d5d8;
+}
+
+.menu-name{
+ 
+}
+
+.menu-name h1{
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
 }
 
 /* ****************************************** */
@@ -105,10 +117,8 @@ ul.main-menu {
 
 }
 .article-div p{
-
-    color:#383434;
-    background-color:#fff;
-
+    color:#020000;
+    font-size: large;
     word-break: break-all;
 }
 
@@ -137,7 +147,7 @@ ul.main-menu {
 }
 
 .section-2{
-    background-color: #232f3e;
+    background-color: #000000;
     height: 100px;
     padding: 4px;
 }

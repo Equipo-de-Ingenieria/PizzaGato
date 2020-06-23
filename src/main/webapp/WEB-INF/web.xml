@@ -12,6 +12,10 @@
         <servlet-name>CientRedirectServlet</servlet-name>
         <servlet-class>servlets.CientRedirectServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <servlet-class>servlets.CreateOrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClientSigninServlet</servlet-name>
         <url-pattern>/ClientSigninServlet</url-pattern>
@@ -32,7 +36,6 @@
         <servlet-name>CommentarieServlet</servlet-name>
         <url-pattern>/CommentarieServlet</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/OrderServlet</url-pattern>
@@ -41,8 +44,7 @@
         <servlet-name>CientRedirectServlet</servlet-name>
         <url-pattern>/CientRedirectServlet</url-pattern>
     </servlet-mapping>
-    
-        <servlet>
+    <servlet>
         <servlet-name>PizzaMenuServlet</servlet-name>
         <servlet-class>servlets.PizzaMenuServlet</servlet-class>
     </servlet>
@@ -50,8 +52,10 @@
         <servlet-name>PizzaMenuServlet</servlet-name>
         <url-pattern>/PizzaMenuServlet</url-pattern>
     </servlet-mapping>
-    
-
+    <servlet-mapping>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <url-pattern>/CreateOrderServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

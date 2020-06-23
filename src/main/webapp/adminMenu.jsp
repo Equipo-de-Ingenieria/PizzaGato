@@ -7,7 +7,7 @@
         <link href="css/admin.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bank Crosaint</title>
+        <title>Pizza Gato</title>
     </head>
       <jsp:useBean class="models.Admin" id="aux" scope="session">
         </jsp:useBean>

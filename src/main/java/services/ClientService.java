@@ -28,7 +28,7 @@ public class ClientService {
             + "(idCard, name, lastname, address, phone, email, password) "
             + "values (?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_CLIENT = "update Clients set password = ? where idClient = ?";
-    
+
     public static Connection getConnection() throws
             ClassNotFoundException,
             IllegalAccessException,
@@ -44,7 +44,7 @@ public class ClientService {
         );
         return connection;
     }
-    
+
     static void printAffectedRows(int counter) {
         if (counter > 0) {
             System.out.println("Se insertaron " + counter);
@@ -67,11 +67,11 @@ public class ClientService {
                 if (rs.next()) {
                     client = new Client();
                     client.setIdClient(rs.getInt("idClient"));
-                    client.setIdCard("idCard");
-                    client.setName("name");
-                    client.setLastName("lastname");
-                    client.setAddress("address");
-                    client.setPhone("phone");
+                    client.setIdCard(rs.getString("idCard"));
+                    client.setName(rs.getString("name"));
+                    client.setLastName(rs.getString("lastname"));
+                    client.setAddress(rs.getString("address"));
+                    client.setPhone(rs.getString("phone"));
                     client.setEmail(rs.getString("email"));
                 }
             }
@@ -122,7 +122,7 @@ public class ClientService {
         client = getClient("nacho@gmail.com", "qwer");
     }
 
-     public boolean updatePassword(int id, String password) {
+    public boolean updatePassword(int id, String password) {
         try (Connection connection = getConnection();
                 PreparedStatement stm = connection.prepareStatement(UPDATE_CLIENT)) {
             stm.clearParameters();

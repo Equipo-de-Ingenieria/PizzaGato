@@ -5,10 +5,12 @@
                    : Carlos Zhou
 --%>
 
+<%@page import="models.Client"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" type="image/ico" href="products-images/favicon.ico">
         <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +18,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="client-css/clientmenu.css" rel="stylesheet" type="text/css"/>
         <title>Pizza Patreon</title>
+
+        <jsp:useBean class="models.Client" id="aux" scope="session">
+        </jsp:useBean>
+        <%
+            Client aux1 = (Client) request.getSession(true).getAttribute("userData");
+            aux.setClient(aux1);
+        %>
+
     </head>
     <body>
         <div class="wrapper">
@@ -27,7 +37,8 @@
 
             <nav>
                 <ul class="main-menu">
-                    <li href="#"><a>Ordenar</a></li>
+                    <li><a href="clientMenu.jsp">Inicio</a></li>
+                    <li><a href="orderMenu.jsp">Ordenar</a></li>
                     <li href="#"><a>Mi cuenta</a></li>
                     <li href="#"><a>Mis Ordenes</a></li>
                     <li href="#"><a>Feedback</a></li>

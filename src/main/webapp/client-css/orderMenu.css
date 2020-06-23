@@ -19,11 +19,11 @@ body {
     max-height: max-content;
     margin: 0 auto; 
     /*Aesthetic white*/
-    background-color: #fff;
+    background-color: #e6e3e3;
 }
 
 header {
-    background-color: #d43f8d;
+    background-color: #b21919;
     height: 150px;
     padding: 4px;
 }
@@ -46,7 +46,7 @@ header h2 {
     text-align: center;
     line-height: 32px;
     /*Dark grey*/
-    background-color: #818181;
+    background-color: #170f0f;
 }
 
 
@@ -76,7 +76,11 @@ ul.main-menu {
 }
 
 .main-menu a:hover {
-    color: #59d5d8;
+    color: #e70000;
+}
+
+.menu-name{
+
 }
 
 .menu-name h1{
@@ -98,6 +102,7 @@ ul.main-menu {
     display:flex;
     flex-direction:row;
     align-items:center;
+    margin: 10px auto auto 23px;
 }
 .menu-name h2{
     flex-basis: 100px;
@@ -109,24 +114,149 @@ ul.main-menu {
 
 
 .products-container {
-/*    background-color:red;*/
+    background-color:white;
     height: 800px;
-    width: 600px;
+    width: 500px;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 20px;
+
+    -webkit-box-shadow: 2px 1px 35px -14px #000000; 
+    box-shadow: 2px 1px 35px -14px #000000;
+    padding:5px;
+}
+
+.products-cart button{
+    background-color: red;
 }
 
 .cart-container {
-/*    background-color:green;*/
+    background-color:white;
     height: 800px;
-    width: 330px;
-    
+    width: 326px;
+
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    margin: 20px;
+    -webkit-box-shadow: 2px 1px 35px -14px #000000; 
+    box-shadow: 2px 1px 35px -14px #000000;
+
 }
+
+
+.products-cart{
+    width: -webkit-fill-available;
+    height: 80%;
+    overflow: auto;
+    background-color:white;
+
+
+
+}
+
+.total-div{
+    width: -webkit-fill-available;
+    height: 25%;
+    align-self: flex-end;
+    background-color: #911e1e;
+
+    padding: 10px;
+    color:white;
+}
+
+.total-div span{
+    width: 100%;  
+}
+
+#total{
+    display:flex;
+    margin-bottom:10px;
+}
+.divBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.total-div button{
+    width: 75%;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+
+
+/*Overlay*/
+
+/* The Overlay (background) */
+.cart-overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.cart-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.cart-overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.cart-overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.cart-overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .cart-overlay a {font-size: 20px}
+    .cart-overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+
+
+
 
 
 

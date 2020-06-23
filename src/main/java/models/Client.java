@@ -5,8 +5,10 @@
  */
 package models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -16,18 +18,25 @@ public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Expose
     @SerializedName("idClient")
     private int idClient;
+    @Expose
     @SerializedName("idCard")
     private String idCard;
+    @Expose
     @SerializedName("name")
     private String name;
+    @Expose
     @SerializedName("lastName")
     private String lastName;
+    @Expose
     @SerializedName("address")
     private String address;
+    @Expose
     @SerializedName("phone")
     private String phone;
+    @Expose
     @SerializedName("email")
     private String email;
     @SerializedName("password")
@@ -122,9 +131,32 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" + "idClient=" + idClient + ", idCard=" + idCard + ", name=" + name + ", lastName=" + lastName + ", address=" + address + ", phone=" + phone + ", email=" + email + ", password=" + password + '}';
+    public void setClient(Client client) {
+        this.idClient = client.getIdClient();
+        this.idCard = client.getIdCard();
+        this.name = client.getName();
+        this.lastName = client.getLastName();
+        this.address = client.getAddress();
+        this.phone = client.getPhone();
+        this.email = client.getEmail();
+        this.password = client.getPassword();
     }
 
+    @Override
+    public String toString() {
+        return toJSON().toString();
+    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        r.put("idClient", this.idClient);
+        r.put("idCard", this.idCard);
+        r.put("name", this.name);
+        r.put("lastName", this.lastName);
+        r.put("phone", this.phone);
+        r.put("email", this.email);
+        r.put("password", this.password);
+        
+        return r;
+    }
 }

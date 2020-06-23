@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script src="js/pizzaMenuScript.js" type="text/javascript"></script>
-        <title>Bank Crosaint</title>
+        <title>Pizza Patreon</title>
     </head>
     <jsp:useBean class="models.Admin" id="aux" scope="session">
     </jsp:useBean>

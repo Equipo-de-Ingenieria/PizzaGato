@@ -31,6 +31,8 @@ public class Product implements Serializable {
     private String imgPath;
     @SerializedName("ingredients")
     private ArrayList<Ingredient> ingredients;
+    @SerializedName("quantity")
+    private int quantity;
 
     public Product(int idProduct, String code, String size, String description, double price) {
         this.idProduct = idProduct;
@@ -112,6 +114,14 @@ public class Product implements Serializable {
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     

@@ -218,7 +218,7 @@ public class ProductService {
         Product product;
 
         try (Connection connection = getConnection();
-                PreparedStatement pstm = connection.prepareStatement(GET_PRODUCTS);) {
+                PreparedStatement pstm = connection.prepareStatement(GET_PRODUCTS_BY_TYPE);) {
             pstm.clearParameters();
             pstm.setString(1, type);
 
@@ -315,16 +315,16 @@ public class ProductService {
     }
 
     public static void main(String[] args) {
-        Product p = new Product();
-        p.setDescription("Pizza Gato");
-        p.setSize("20\"");
-        p.setPrice(5000.50);
-        p.setImgPath("tucalandia");
-        p.setCode("TREL");
-        p.setIdProduct(7);
-
-        updateProduct(p);
-        deleteProduct(p.getIdProduct());
+//        Product p = new Product();
+//        p.setDescription("Pizza Gato");
+//        p.setSize("20\"");
+//        p.setPrice(5000.50);
+//        p.setImgPath("tucalandia");
+//        p.setCode("TREL");
+//        p.setIdProduct(7);
+//
+//        updateProduct(p);
+//        deleteProduct(p.getIdProduct());
     }
 
 }

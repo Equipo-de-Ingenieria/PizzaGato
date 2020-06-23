@@ -1,4 +1,5 @@
 models\FeedBack.class
+servlets\CreateOrderServlet$1.class
 models\Invoice.class
 models\Status.class
 services\InvoiceService.class
@@ -12,6 +13,7 @@ services\RecipeService.class
 models\Admin.class
 servlets\PizzaMenuServlet.class
 servlets\LoginServlet.class
+servlets\CreateOrderServlet.class
 models\Client.class
 services\AdminService.class
 services\DetailService.class
