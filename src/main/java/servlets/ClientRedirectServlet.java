@@ -6,7 +6,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,15 +18,57 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Erick
  */
-public class CientRedirectServlet extends HttpServlet {
+@WebServlet(
+        name = "ClientRedirectServlet",
+        urlPatterns = {"/ClientRedirectServlet"}
+)
+public class ClientRedirectServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
-        
-        switch (request.getAttribute("menu").toString()){
-            
+
+        String website = request.getParameter("menu");
+        String url = null;
+
+        try (PrintWriter out = response.getWriter()) {
+            if (website != null && !website.isEmpty()) {
+                switch (website) {
+                    case "start":
+                        url = "WEB-INF/clientMenu.jsp";
+                        break;
+
+                    case "order":
+                        url = "WEB-INF/orderMenu.jsp";
+                        break;
+
+                    case "account":
+                        url = "WEB-INF/clientAccount.jsp";
+                        break;
+
+                    case "orders":
+                        url = "WEB-INF/clientOrders.jsp";
+                        break;
+
+                    case "feedback":
+                        url = "WEB-INF/clientFeedback.jsp";
+
+                }
+
+                if (url != null) {
+                    response.setStatus(200);
+                    out.print("OK");
+
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+                    dispatcher.forward(request, response);
+                } else {
+                    response.sendError(404);
+                    out.print("Cannot find page");
+                }
+            }
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

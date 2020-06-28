@@ -1,3 +1,12 @@
+<%-- 
+    Document   : feedback
+    Created on : Jun 27, 2020, 11:37:02 AM
+    Author     : Erick Badilla Gonzalez
+                   : Carlos Zhou Zheng
+                   : David Vargas
+--%>
+
+
 <%@page import="servlets.PizzaMenuServlet"%>
 <%@page import="models.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,11 +19,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script src="js/pizzaMenuScript.js" type="text/javascript"></script>
-<<<<<<< HEAD
         <title>Pizza Patreon</title>
-=======
-        <title>Pizza</title>
->>>>>>> 3a1fe3291469ee3fbd036ad28e1489938e4e5f48
+
+
     </head>
     <jsp:useBean class="models.Admin" id="aux" scope="session">
     </jsp:useBean>

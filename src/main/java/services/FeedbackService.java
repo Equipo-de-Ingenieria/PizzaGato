@@ -26,7 +26,8 @@ import org.json.simple.JSONArray;
 public class FeedbackService {
 
     private static final String GET_FEEDBACKS = "select c.name, f.description, f.idFeedback, f.idClient from `eif209_2001_p02`.Feedbacks f, `eif209_2001_p02`.Clients c where f.idClient = c.idClient group by c.name, f.description;";
-
+    private static final String INSERT_FEEDBACK = "insert into `eif209_2001_p02`.feedbacks (idClient, description) values (?, ?)";
+    
     public static Connection getConnection() throws
             ClassNotFoundException,
             IllegalAccessException,
@@ -68,6 +69,30 @@ public class FeedbackService {
             Logger.getLogger(FeedbackService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fbs;
+    }
+    
+        public static boolean insertFeedback(int idClient, String message) {
+        try (Connection connection = getConnection();
+                PreparedStatement stm = connection.prepareStatement(INSERT_FEEDBACK);) {
+            stm.clearParameters();
+
+            stm.setInt(1, idClient);
+            stm.setString(2, message);
+          
+            if (stm.executeUpdate() == 1) {
+                return true;
+            }
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+
+        }
+        return false;
+
     }
 
     public static void main(String[] args) {

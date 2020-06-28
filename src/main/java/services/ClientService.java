@@ -27,7 +27,8 @@ public class ClientService {
     private static final String INSERT_CLIENT = "insert into Clients "
             + "(idCard, name, lastname, address, phone, email, password) "
             + "values (?, ?, ?, ?, ?, ?, ?);";
-    private static final String UPDATE_CLIENT = "update Clients set password = ? where idClient = ?";
+    private static final String UPDATE_CLIENT = "update `eif209_2001_p02`.Clients set idCard= ?, name = ?, lastname = ?, address = ?, phone = ?, email = ?, password = ? "
+            + "where idClient = ?";
 
     public static Connection getConnection() throws
             ClassNotFoundException,
@@ -73,6 +74,7 @@ public class ClientService {
                     client.setAddress(rs.getString("address"));
                     client.setPhone(rs.getString("phone"));
                     client.setEmail(rs.getString("email"));
+                    client.setPassword(password);
                 }
             }
             stm.close();
@@ -122,16 +124,21 @@ public class ClientService {
         client = getClient("nacho@gmail.com", "qwer");
     }
 
-    public boolean updatePassword(int id, String password) {
+    public static boolean updateClient(Client client) {
         try (Connection connection = getConnection();
                 PreparedStatement stm = connection.prepareStatement(UPDATE_CLIENT)) {
             stm.clearParameters();
 
-            stm.setInt(1, id);
-            stm.setString(2, password);
+            stm.setString(1, client.getIdCard());
+            stm.setString(2, client.getName());
+            stm.setString(3, client.getLastName());
+            stm.setString(4, client.getAddress());
+            stm.setString(5, client.getPhone());
+            stm.setString(6, client.getEmail());
+            stm.setString(7, client.getPassword());
+            stm.setInt(8, client.getIdClient());
 
-            /* Los inserts se hacen con execute vs execute query*/
-            if (stm.executeUpdate() != -1) {
+            if (stm.executeUpdate() == 1) {
                 return true;
             }
         } catch (IOException

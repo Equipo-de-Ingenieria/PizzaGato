@@ -445,6 +445,8 @@ function createBeverage(product, container, productType) {
     button.addEventListener('click', function () {
         console.log(this.getAttribute("idProduct"));
         addBeverage(this.getAttribute("idProduct"), sizeSelect.options[sizeSelect.selectedIndex].text);
+
+
     });
 
 
@@ -921,13 +923,14 @@ function saveOrder() {
 
 function cleanOrder() {
     document.getElementById("products-cart").innerHTML = "";
+    document.getElementById("total").innerHTML = coinFormat(0);
     cartProducts = [];
 }
 
 
 function sendOrder() {
-    
-    
+
+
     fetch('CreateOrderServlet', {
         method: 'POST',
         headers: {

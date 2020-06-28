@@ -4,10 +4,11 @@ models\Invoice.class
 models\Status.class
 services\InvoiceService.class
 servlets\CommentarieServlet.class
-servlets\CientRedirectServlet.class
+servlets\UpdateClientServlet.class
 models\Ingredient.class
 services\IngredientService.class
 models\Detail.class
+servlets\InvoiceServlet.class
 servlets\ClientSigninServlet.class
 services\RecipeService.class
 models\Admin.class
@@ -17,11 +18,14 @@ servlets\CreateOrderServlet.class
 models\Client.class
 services\AdminService.class
 servlets\SellsMenuServlet.class
+servlets\GetClient.class
 services\DetailService.class
 services\FeedbackService.class
 mysqldb\DataBase.class
 services\ProductService.class
 services\ClientService.class
 models\Product.class
+servlets\SendFeedbackServlet.class
 servlets\OrderServlet.class
 models\Recipe.class
+servlets\ClientRedirectServlet.class

@@ -1,3 +1,11 @@
+<%-- 
+    Document   : feedback
+    Created on : Jun 27, 2020, 11:37:02 AM
+    Author     : Erick Badilla Gonzalez
+                   : Carlos Zhou Zheng
+                   : David Vargas Mejia
+--%>
+
 <%@page import="servlets.CommentarieServlet"%>
 <%@page import="models.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

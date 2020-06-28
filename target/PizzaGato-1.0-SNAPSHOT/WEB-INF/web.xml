@@ -9,12 +9,28 @@
         <servlet-class>servlets.OrderServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CientRedirectServlet</servlet-name>
-        <servlet-class>servlets.CientRedirectServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CreateOrderServlet</servlet-name>
         <servlet-class>servlets.CreateOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientRedirectServlet</servlet-name>
+        <servlet-class>servlets.ClientRedirectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateClientServlet</servlet-name>
+        <servlet-class>servlets.UpdateClientServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetClient</servlet-name>
+        <servlet-class>servlets.GetClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendFeedbackServlet</servlet-name>
+        <servlet-class>servlets.SendFeedbackServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InvoiceServlet</servlet-name>
+        <servlet-class>servlets.InvoiceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ClientSigninServlet</servlet-name>
@@ -40,10 +56,6 @@
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/OrderServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CientRedirectServlet</servlet-name>
-        <url-pattern>/CientRedirectServlet</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>PizzaMenuServlet</servlet-name>
         <servlet-class>servlets.PizzaMenuServlet</servlet-class>
@@ -52,14 +64,11 @@
         <servlet-name>PizzaMenuServlet</servlet-name>
         <url-pattern>/PizzaMenuServlet</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
     <servlet-mapping>
         <servlet-name>CreateOrderServlet</servlet-name>
         <url-pattern>/CreateOrderServlet</url-pattern>
     </servlet-mapping>
-=======
-    
-     <servlet>
+    <servlet>
         <servlet-name>SellsMenuServlet</servlet-name>
         <servlet-class>servlets.SellsMenuServlet</servlet-class>
     </servlet>
@@ -67,8 +76,26 @@
         <servlet-name>SellsMenuServlet</servlet-name>
         <url-pattern>/SellsMenuServlet</url-pattern>
     </servlet-mapping>
-
->>>>>>> 3a1fe3291469ee3fbd036ad28e1489938e4e5f48
+    <servlet-mapping>
+        <servlet-name>ClientRedirectServlet</servlet-name>
+        <url-pattern>/ClientRedirectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateClientServlet</servlet-name>
+        <url-pattern>/UpdateClientServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetClient</servlet-name>
+        <url-pattern>/GetClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendFeedbackServlet</servlet-name>
+        <url-pattern>/SendFeedbackServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InvoiceServlet</servlet-name>
+        <url-pattern>/InvoiceServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

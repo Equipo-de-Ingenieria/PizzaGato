@@ -25,10 +25,16 @@ public class InvoiceService {
     private static final String GET_INVOICES = "select inv.idInvoice, inv.idClient, inv.idStatus, inv.date, stat.description "
             + "from `eif209_2001_p02`.invoices inv, `eif209_2001_p02`.status stat "
             + "where idClient = ? and inv.idStatus = stat.idStatus;";
-    private static final String CREATE_INVOICE = "insert into `eif209_2001_p02`.invoices (idclient, idStatus, date) "
-            + "values (?, 1, CURRENT_TIMESTAMP());";
+    private static final String CREATE_INVOICE = "insert into `eif209_2001_p02`.invoices (idclient, idStatus) "
+            + "values (?, ?);";
     private static final String GET_ALL_INVOICES = "select inv.idInvoice, inv.idClient, inv.idStatus, inv.date, stat.description from `eif209_2001_p02`.invoices inv, `eif209_2001_p02`.status stat where inv.idStatus = stat.idStatus;";
-    
+
+    private static final String GET_LASTID = "select max(idInvoice) from `eif209_2001_p02`.invoices";
+
+    private static final String GET_INVOICE = "select inv.idInvoice, inv.idClient, inv.date, stat.description "
+            + "from `eif209_2001_p02`.invoices inv, `eif209_2001_p02`.status stat "
+            + "where inv.idStatus = stat.idStatus and inv.idInvoice = ?;";
+
     private static void printAffectedRows(int counter) {
         if (counter > 0) {
             System.out.println("Se insertaron " + counter);
@@ -46,6 +52,7 @@ public class InvoiceService {
                 PreparedStatement stm = connection.prepareStatement(GET_INVOICES);) {
             stm.clearParameters();
             stm.setInt(1, idClient);
+            stm.setInt(2, 1);
 
             try (ResultSet rs = stm.executeQuery()) {
                 invoices = new ArrayList();
@@ -98,6 +105,7 @@ public class InvoiceService {
                 PreparedStatement stm = connection.prepareStatement(CREATE_INVOICE);) {
             stm.clearParameters();
             stm.setInt(1, idClient);
+            stm.setInt(2, 1);
 
             int counter = 0;
 
@@ -127,9 +135,9 @@ public class InvoiceService {
         }
         return false;
     }
-    
-        public static ArrayList<Invoice> getAllInvoices(){
-         ArrayList<Invoice> invoices = null;
+
+    public static ArrayList<Invoice> getAllInvoices() {
+        ArrayList<Invoice> invoices = null;
         Invoice invoice = null;
 
         try (Connection connection = getConnection();
@@ -164,17 +172,76 @@ public class InvoiceService {
         invoices = setDetails(invoices);
         return invoices;
     }
-    private static ArrayList<Invoice> setDetails(ArrayList<Invoice> inv){
-        for(int i = 0; i < inv.size(); i++){
+
+    private static ArrayList<Invoice> setDetails(ArrayList<Invoice> inv) {
+        for (int i = 0; i < inv.size(); i++) {
             inv.get(i).setDetails(DetailService.getDetails(inv.get(i).getIdInvoice()));
         }
         return inv;
     }
-    public static void main(String[] args) {
 
-        ArrayList<Invoice> inv = getAllInvoices();
-        System.out.println(inv.toString());
-        createInvoice(1);
+    public static void main(String[] args) {
+//        ArrayList<Invoice> inv = getAllInvoices();
+//        System.out.println(inv.toString());
+//        createInvoice(1);
+
+        System.out.println(getLastID());
+    }
+
+    public static int getLastID() {
+        int idInvoice = 0;
+
+        try (Connection connection = getConnection();
+                PreparedStatement stm = connection.prepareStatement(GET_LASTID);) {
+            stm.clearParameters();
+
+            try (ResultSet rs = stm.executeQuery()) {
+                if (rs.next()) {
+                    idInvoice = rs.getInt(1);
+                }
+            }
+            stm.close();
+            connection.close();
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+        return idInvoice;
+    }
+
+    public static Invoice getInvoice(int idInvoice) {
+        Invoice invoice = new Invoice();
+        
+        
+        try (Connection connection = getConnection();
+                PreparedStatement stm = connection.prepareStatement(GET_INVOICE);) {
+            stm.clearParameters();
+
+            stm.setInt(1, idInvoice);
+
+            try (ResultSet rs = stm.executeQuery()) {
+                if (rs.next()) {
+                    invoice.setIdInvoice(rs.getInt("inv.idInvoice"));
+                    invoice.setIdClient(rs.getInt("inv.idClient"));
+                    invoice.setDate(rs.getTimestamp("inv.date"));
+                    Status status = new Status();
+                    status.setDescription(rs.getString("stat.description"));
+                    invoice.setStatus(status);
+                }
+            }
+            stm.close();
+            connection.close();
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+        return invoice;
     }
 
 }

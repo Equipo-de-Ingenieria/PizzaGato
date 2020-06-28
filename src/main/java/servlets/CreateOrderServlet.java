@@ -7,7 +7,6 @@ package servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
@@ -19,7 +18,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Client;
+import models.Detail;
 import models.Product;
+import org.json.simple.JSONObject;
+import services.DetailService;
+import services.InvoiceService;
 
 /**
  *
@@ -34,11 +37,7 @@ public class CreateOrderServlet extends HttpServlet {
         String productsJSON = request.getParameter("order");
         String userJSON = request.getParameter("user");
 
-        JsonObject json = new JsonObject();
-
         // put some value pairs into the JSON object .
-        json.addProperty("Message", "OK");
-
         System.out.println(productsJSON);
         System.out.println(userJSON);
 
@@ -47,7 +46,7 @@ public class CreateOrderServlet extends HttpServlet {
         Type productListType = new TypeToken<ArrayList<Product>>() {
         }.getType();
 
-        ArrayList<Product> products;
+        ArrayList<Product> products = new ArrayList();
 
         try {
             products = g.fromJson(productsJSON, productListType);
@@ -55,7 +54,7 @@ public class CreateOrderServlet extends HttpServlet {
             System.err.println(e.getMessage());
         }
 
-        Client client;
+        Client client = new Client();
         try {
             client = g.fromJson(userJSON, Client.class);
             System.out.println(client.toString());
@@ -63,45 +62,49 @@ public class CreateOrderServlet extends HttpServlet {
             System.err.println(e.getMessage());
         }
 
+        try {
+            InvoiceService.createInvoice(client.getIdClient());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        ArrayList<Detail> details = new ArrayList();
+
+        int invoiceID = InvoiceService.getLastID();
+
+        products.forEach((product) -> {
+            details.add(new Detail(invoiceID, product.getIdProduct(), product.getQuantity()));
+        });
+
+
         try (PrintWriter out = response.getWriter()) {
-            out.println("Ok!");
+
+            if (DetailService.createDetails(details)) {
+                response.setStatus(200);
+                
+                JSONObject status = new JSONObject();
+                status.put("status", "**Compra realizada**  \n\n\nSu numero de orden es: " + String.valueOf(invoiceID));
+                out.print(status);
+            }
+            else{
+                response.sendError(404);
+            }
+
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

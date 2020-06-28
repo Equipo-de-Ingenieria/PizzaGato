@@ -69,12 +69,13 @@ public class DetailService {
                 stm.setInt(1, detail.getIdInvoice());
                 stm.setInt(2, detail.getIdProduct());
                 stm.setInt(3, detail.getStock());
+                stm.addBatch();
             }
 
             int[] updateCounts = stm.executeBatch();
             checkUpdateCounts(updateCounts);
 
-            if (updateCounts.length >= 0) {
+            if (updateCounts.length > 0) {
                 return true;
             }
 

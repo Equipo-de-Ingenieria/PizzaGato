@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession(true).setAttribute("userData", null);
             request.getSession(true).setAttribute("userData", client);
             RequestDispatcher dispatcher = request.getRequestDispatcher(
-                    "clientMenu.jsp");
+                    "WEB-INF/clientMenu.jsp");
             dispatcher.forward(request, response);
         } else if (admin != null) { //Admin
             request.getSession(true).setAttribute("userData", null);
